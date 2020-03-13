@@ -11,3 +11,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.nav{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 35px 16px;
+  text-decoration: none;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #50AD11;
+}
+li {
+  float: left;
+}
+
+/* .exerciseCard{
+  background-color: #F3F358
+}
+
+.foodCard{
+  background-color: #F3F358
+}
+
+.noteCard{
+  background-color: #F3F358
+} */

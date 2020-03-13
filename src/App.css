@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-image: url("https://cdn.hipwallpaper.com/i/84/39/Awykrv.jpg");
+
 }
 
 .App-logo {
@@ -13,10 +15,67 @@
   }
 }
 
+.primary-bttn {
+  font-size: 17px;
+  background: #39BE00;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 50px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.primary-bttn:hover {
+  background: #257603;
+}
+
+.secondary-bttn{
+  font-size: 10px;
+  background: #fff;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 30px;
+  color: #39BE00;
+  font-weight: 700;
+}
+
+.secondary-bttn:hover {
+  background: #D3D3D3;
+}
+
+.navLogout {
+  float: right;
+  position: absolute;
+  right: 1%;
+  top: 5%;
+  background: #eeee;
+  padding: 10px;
+  border: 1px solid #bbbb;
+  padding-left: 23px;
+  padding-right: 23px;
+  font-size: 15px;
+}
+
+.navLogout a {
+  color:#222;
+  text-decoration: none;
+  font-weight:100;
+}
+
+.nav a{
+  color:#fff;
+  text-decoration: none;
+  font-weight:100;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
-  display: flex;
+  display: block;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -35,4 +94,182 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.track-container {
+  display: flex;
+  background: #1e4900;
+  justify-content: center;
+  border: 10px solid #fff;
+  padding: 10px;
+  margin: 30px;
+  
+}
+
+
+#pet-select {
+  height: 46px;
+  font-size: 20px;
+  width: 212px;
+  border: 3px solid #fff;
+}
+
+.track-container-exercise {
+  flex: 1;
+  display: flex;
+  background: #1e4900;
+  justify-content: center;
+  border: 10px solid #fff;
+  padding: 10px;
+  margin: 30px;
+}
+
+.top-section{
+  display: flex
+}
+
+.graph-section{
+  flex: 3;
+  background: #1e4900;
+  justify-content: center;
+  border: 10px solid #fff;
+  padding: 10px;
+  margin: 30px;
+}
+
+.track-container-meal {
+  display: flex;
+  background: #1e4900;
+  justify-content: space-around;
+  border: 10px solid #fff;
+  padding: 10px;
+  margin: 30px;
+ 
+}
+
+.food-header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.food-add{
+  justify-content: flex-end;
+  align-items: center;
+  top: 20
+}
+
+.track-box {
+  display: block;
+  align-items: center;
+  padding: 10px
+}
+
+.input-card{
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-top: 10px solid #39BE00;
+  padding: 10px;
+  color: #222;
+  font-family: "Open Sans";
+  font-size: 24px;
+  font-style: normal;
+}
+
+.note-card{
+  display: block;
+  align-items: center;
+  background: #fff;
+  border-top: 10px solid #39BE00;
+  padding: 10px;
+}
+
+.input-pic{
+  flex: 2;
+  width: 30%;
+  height: auto
+}
+
+.input-text{
+  color: #222;
+  font-family: "Arial";
+  font-size: 15px;
+  font-style: normal;
+  flex: 1
+}
+
+.exercise-card{
+  display: flex;
+  justify-content: space-between;
+  width: 1000px;
+  align-items: center;
+  background: #fff;
+  border-top: 10px solid #39BE00;
+  padding: 10px;
+}
+
+.exercise-text{
+  justify-content: flex-start;
+  color: #222;
+  font-family: "Arial";
+  font-size: 15px;
+  font-style: bold;
+}
+
+.exercise-buttons{
+  justify-content: flex-end;
+}
+
+.calendar-page{
+  align-items: center;
+}
+
+.calendar-div{
+  display: inline-block;
+  align-items: center;
+}
+
+.calendar{
+  align-items: center;
+  width: 1000px;
+}
+
+.exercise-plan-container{
+  flex: 1;
+  display: block;
+  background: #1e4900;
+  justify-content: center;
+  border: 10px solid #fff;
+  padding: 10px;
+  margin: 30px;
+  
+}
+
+.pie-chart-div{
+  flex: 1;
+}
+
+.bar-graph-div{
+  flex: 1;
+  justify-content: center;
+}
+
+.graphs-div {
+  display: block;
+  justify-content: center;
+}
+
+.top-graphs-div{
+  display: flex;
+  justify-content: space-between;
+}
+
+.exercise-note{
+  color: #333;
+  font-size: 50%;
+}
+
+.food-note{
+  color: #333;
+  font-size: 80%;
 }

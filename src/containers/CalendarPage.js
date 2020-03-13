@@ -103,12 +103,23 @@ export default class CalendarPage extends Component {
       let array = []
       let date = (today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + (today.getDate() - day + 1 + i))
       let filteredFoods = this.state.weekFoodData.filter(food => food.date === date).map(food => food.calories)
+      let filteredExercises = this.state.weekExerciseData.filter(exercise => exercise.date === date).map(exercise => exercise.calories)
+
       let sum
-      if(!filteredFoods[0]){
+      if(!filteredFoods[0] && !filteredExercises[0]){
         sum = 0
-      }else {
+      }else if(!filteredFoods[0] && !!filteredExercises[0]){
+        sum = filteredExercises.reduce((total, sum) => total + sum) * -1
+      }else if(!!filteredFoods[0] && !filteredExercises[0]){
         sum = filteredFoods.reduce((total, sum) => total + sum)
-      }
+      } else {
+        sum = (filteredFoods.reduce((total, sum) => total + sum)) - (filteredExercises.reduce((total, sum) => total + sum))
+      }// }else {
+      //   let foodSum = filteredFoods.reduce((total, sum) => total +sum)
+      //   let exerciseSum = filteredExercises.reduce((total, sum) => total + sum)
+      //   if()
+
+      // }
       let newDate = date.split("-")[1] + "/" + date.split("-")[2]
       array.push(newDate)
       array.push(sum)
@@ -165,7 +176,7 @@ export default class CalendarPage extends Component {
           </div>
         </div>
         <div className = "exercise-plan-container">
-          <h3>This week's calorie intake</h3>
+          <h3>This week's calorie intake (w/ burned calories)</h3>
           <div className = "exercise-plan-display">
             {graph}
             
