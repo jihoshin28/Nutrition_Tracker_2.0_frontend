@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import api from '../services/Api'
-
+import WeightGraph from '../components/WeightGraph'
 
 export default class ProfilePage extends Component {
     constructor(){
@@ -65,7 +65,7 @@ export default class ProfilePage extends Component {
                 user = this.capitalize(this.state.current_user.first_name)
                 userData = 
                 <div>
-                    <p>Profile Page</p>
+                    <p>User Info</p>
                     <div>
                         <img width = "350px" src ={image}></img>
                     </div>
@@ -85,11 +85,14 @@ export default class ProfilePage extends Component {
                 <h1>Welcome {user}</h1>
                 <br></br>
                     <div className = "exercise-plan-container">
-                        <div className = "exercise-plan-display">
+                        <div>
                         <h3>{userData}</h3>
                         </div>
                         <button className="secondary-bttn" onClick = {this.editUser}>Edit Profile</button>
                         <button className="secondary-bttn" onClick = {this.deleteUser}>Delete Account</button>
+                    </div>
+                    <div className = "exercise-plan-container">
+                        <WeightGraph/>
                     </div>
                 
                 <br></br>
