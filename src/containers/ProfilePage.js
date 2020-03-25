@@ -51,8 +51,21 @@ export default class ProfilePage extends Component {
         })
     }
 
+    handleChange = (e) => {
+        let newField = {...this.state.fields, [e.target.name]: e.target.value}
+        this.setState({
+            fields: newField
+        })
+        console.log(this.state.fields)
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+        console.log("Submitted!")
+    }
+
     render() {
-        console.log(this.state.current_user)
+        
         let userData 
         let user
             if(!!this.state.current_user){
@@ -92,6 +105,34 @@ export default class ProfilePage extends Component {
                         <button className="secondary-bttn" onClick = {this.deleteUser}>Delete Account</button>
                     </div>
                     <div className = "exercise-plan-container">
+                    <h1>Weight tracker</h1>
+                    <h2>Enter your weight</h2>
+                    <form onSubmit = {this.handleSubmit}>
+                        <label>
+                            Date:
+                        </label>
+                        <input name = "weight_date" type = "date" onChange = {this.handleChange}>
+                        </input>
+                        <br></br>
+                        <label>
+                            Weight:
+                        </label>
+                        <input name = "weight_number" type = "number" placeholder = "Enter weight!" onChange = {this.handleChange}>
+                        </input>
+                        <br></br>
+                        <input type ="submit"></input>
+                    </form>
+                    <br></br>
+                    </div>
+                    <div className = "exercise-plan-container">
+                        <h2>Select a timeline</h2>
+                        <select name = "timeline" onChange = {this.handleChange}>
+                            <option value = "">Select a Timeline</option>
+                            <option value = "week">Week</option>
+                            <option value = "month">Month</option>
+                            <option value = "year">Year</option>
+                        </select>
+
                         <WeightGraph/>
                     </div>
                 

@@ -164,15 +164,7 @@ export default class CalendarPage extends Component {
             />
           </div>
           <div>
-        <div>
-    {/* <Calendar
-      localizer={localizer}
-      events={myEventsList}
-      startAccessor="start"
-      endAccessor="end"
-      style={{ height: 500 }}
-    /> */}
-  </div>
+       
           </div>
         </div>
         <div className = "exercise-plan-container">
