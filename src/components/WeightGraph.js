@@ -2,16 +2,27 @@ import React, { Component } from 'react'
 import { Chart } from "react-google-charts";
 
 export class WeightGraph extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             posted: false,
-            fields: null
+            timeline: props
         }
     }
 
-    render() {
-        return (
+    componentDidMount(){
+        this.setState({
+            timeline: this.props
+        })
+        console.log('hi')
+    }
+
+    render(){
+        console.log(this.props.timeline)
+        let dataArray = []
+        dataArray.push(['Date', 'Recorded Weight'])
+        dataArray.push(['3/30/2020', 188])
+        return(
             <div>
                 
                 <br></br>
@@ -22,7 +33,7 @@ export class WeightGraph extends Component {
                     height={'600px'}
                     chartType="AreaChart"
                     loader={<div>Loading Chart</div>}
-                    data={30}
+                    data= {dataArray}
                     // *Example Data*
                     // ["Nutrient", "Overall Calorie Intake"],
                     // ["3/23", 0],
@@ -43,7 +54,7 @@ export class WeightGraph extends Component {
                     // For tests
                     rootProps={{ 'data-testid': '1' }}
                   />
-           </div>
+            </div>
             </div>
         )
     }

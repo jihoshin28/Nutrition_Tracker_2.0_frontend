@@ -6,7 +6,8 @@ export default class ProfilePage extends Component {
     constructor(){
         super()
         this.state = {
-            current_user: null
+            current_user: null,
+            fields: []
         }
     }
 
@@ -22,6 +23,7 @@ export default class ProfilePage extends Component {
                     })
                 })
             })
+            
         }
     }
 
@@ -60,8 +62,10 @@ export default class ProfilePage extends Component {
     }
 
     handleSubmit = (e) => {
+        console.log(this.props.currentUser.id, parseInt(this.state.fields.weight,10), this.state.fields.date)
         e.preventDefault()
-        console.log("Submitted!")
+        api.postUserWeight(this.state.current_user, parseInt(this.state.fields.weight, 10), this.state.fields.date)
+        .then(json => console.log(json))
     }
 
     render() {
@@ -107,17 +111,17 @@ export default class ProfilePage extends Component {
                     <div className = "exercise-plan-container">
                     <h1>Weight tracker</h1>
                     <h2>Enter your weight</h2>
-                    <form onSubmit = {this.handleSubmit}>
+                    <form onSubmit = {(e) => this.handleSubmit(e)}>
                         <label>
                             Date:
                         </label>
-                        <input name = "weight_date" type = "date" onChange = {this.handleChange}>
+                        <input name = "date" type = "date" onChange = {this.handleChange}>
                         </input>
                         <br></br>
                         <label>
                             Weight:
                         </label>
-                        <input name = "weight_number" type = "number" placeholder = "Enter weight!" onChange = {this.handleChange}>
+                        <input name = "weight" type = "number" placeholder = "Enter weight!" onChange = {this.handleChange}>
                         </input>
                         <br></br>
                         <input type ="submit"></input>
@@ -133,7 +137,7 @@ export default class ProfilePage extends Component {
                             <option value = "year">Year</option>
                         </select>
 
-                        <WeightGraph/>
+                        <WeightGraph timeline = {this.state.fields.timeline}/>
                     </div>
                 
                 <br></br>

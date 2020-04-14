@@ -34,7 +34,6 @@ constructor(){
 }
 
 componentDidMount() {
-  console.log('hi')
   const token = localStorage.getItem('token');
   if(token) {
     api.getCurrentUser().then(json => {

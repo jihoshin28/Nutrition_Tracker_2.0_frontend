@@ -102,6 +102,19 @@ const postUserNote = (subject, text, user, date) => {
     }).then(res => res.json())
 }
 
+const postUserWeight = (user, weight, date) =>{
+    console.log(user, weight, date)
+    return fetch(`${API_ROOT}weights`, {
+        method: `POST`,
+        headers: headers,
+        body: JSON.stringify({
+            user_id: user.id,
+            date: date,
+            current_weight: weight
+        })
+    }).then(res => res.json())
+}
+
 const editUser = (fields, id) => {
     return fetch(`${API_ROOT}users/${id}`, {
         method: `PATCH`,
@@ -235,6 +248,13 @@ const getUserNotes = (userId, date) => {
     .then(response => response.json())
 }
 
+const getUserWeight = (id, date) => {
+    return fetch(`${API_ROOT}weights/?user_id=${id}`,
+    {
+       headers: headers 
+    }).then(response => response.json())
+}
+
 const getUser = (id) => {
     return fetch(`${API_ROOT}users/${id}`, {headers: headers})
     .then(res => res.json())
@@ -286,6 +306,7 @@ export default {
     postUserFood,
     postUserExercise,
     postUserNote,
+    postUserWeight,
     signUp,
     login,
     getCurrentUser,
@@ -293,6 +314,7 @@ export default {
     getUserFoods,
     getUserExercises,
     getUserNotes,
+    getUserWeight,
     editUser,
     editUserExercise,
     editUserFood,
