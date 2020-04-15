@@ -248,8 +248,9 @@ const getUserNotes = (userId, date) => {
     .then(response => response.json())
 }
 
-const getUserWeight = (id, date) => {
-    return fetch(`${API_ROOT}weights/?user_id=${id}`,
+const getUserWeights = (id, date) => {
+    console.log(id)
+    return fetch(`${API_ROOT}weights?user_id=${id}`,
     {
        headers: headers 
     }).then(response => response.json())
@@ -314,7 +315,7 @@ export default {
     getUserFoods,
     getUserExercises,
     getUserNotes,
-    getUserWeight,
+    getUserWeights,
     editUser,
     editUserExercise,
     editUserFood,

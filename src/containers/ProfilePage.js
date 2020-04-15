@@ -7,7 +7,8 @@ export default class ProfilePage extends Component {
         super()
         this.state = {
             current_user: null,
-            fields: []
+            fields: [],
+            graph_type: null
         }
     }
 
@@ -21,6 +22,7 @@ export default class ProfilePage extends Component {
                     this.setState({
                         current_user: json.data.attributes
                     })
+                    
                 })
             })
             
@@ -42,7 +44,7 @@ export default class ProfilePage extends Component {
         } 
     }
 
-
+   
     editUser = () => {
         this.props.history.push({
             pathname: "/edituser",
@@ -69,11 +71,13 @@ export default class ProfilePage extends Component {
     }
 
     render() {
-        
         let userData 
         let user
+        let current_user
             if(!!this.state.current_user){
+                // console.log(this.state.current_user)
                 let image 
+                current_user = this.state.current_user
                 if(!!this.state.current_user.image){
                     image = this.state.current_user.image
                 } else {
@@ -130,14 +134,14 @@ export default class ProfilePage extends Component {
                     </div>
                     <div className = "exercise-plan-container">
                         <h2>Select a timeline</h2>
-                        <select name = "timeline" onChange = {this.handleChange}>
+                        <select name = "timeline" onChange = {(e) => this.handleChange(e)}>
                             <option value = "">Select a Timeline</option>
                             <option value = "week">Week</option>
                             <option value = "month">Month</option>
                             <option value = "year">Year</option>
                         </select>
 
-                        <WeightGraph timeline = {this.state.fields.timeline}/>
+                        <WeightGraph user = {current_user} timeline = {this.state.fields.timeline}/>
                     </div>
                 
                 <br></br>

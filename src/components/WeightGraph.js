@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Chart } from "react-google-charts";
+import api from '../services/Api.js'
 
 export class WeightGraph extends Component {
     constructor(props){
@@ -10,18 +11,36 @@ export class WeightGraph extends Component {
         }
     }
 
-    componentDidMount(){
-        this.setState({
-            timeline: this.props
-        })
-        console.log('hi')
-    }
+    
 
     render(){
-        console.log(this.props.timeline)
+        console.log(this.props, this.props.timeline)
+
+        if(!!this.props.user){
+            console.log(this.props.user.id)
+            api.getUserWeights(this.props.user.id)
+            .then(json => console.log(json))
+        }
+        
         let dataArray = []
-        dataArray.push(['Date', 'Recorded Weight'])
-        dataArray.push(['3/30/2020', 188])
+        let graphTitle 
+        if(!this.props.timeline || (!!this.props.timeline && this.props.timeline === "week")){
+            dataArray.push(['Date', 'Recorded Weight'])
+            dataArray.push(['3/30/2020', 188])
+            graphTitle = 'This Week\'s Calorie Intake Breakdown'
+
+        } else if(!!this.props.timeline && this.props.timeline === "month") {
+            graphTitle = 'This Month\'s Calorie Intake Breakdown'
+            dataArray.push(['Date', 'Recorded Weight'])
+            dataArray.push(['3/30/2020', 188])
+            dataArray.push(['4/14/2020', 177])
+
+        } else if(!!this.props.timeline && this.props.timeline === "year"){
+            graphTitle = 'This Year\'s Calorie Intake Breakdown'
+            dataArray.push(['Date', 'Recorded Weight'])
+            dataArray.push(['3/30/2020', 188])
+        }
+        
         return(
             <div>
                 
@@ -44,7 +63,7 @@ export class WeightGraph extends Component {
                     // ["3/28", 0],
                     // ["3/29", 0]
                     options={{
-                      title: 'This Week\'s Calorie Intake Breakdown',
+                      title: graphTitle,
                       hAxis: { title: 'Time of Day', titleTextStyle: { color: '#333' } },
                       vAxis: { title: 'Calories', minValue: 0 },
                       // For the legend to fit, we make the chart area smaller
