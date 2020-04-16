@@ -11,37 +11,66 @@ export class WeightGraph extends Component {
         }
     }
 
-    
+    graphData = (type) => {
+        
+    }
 
     render(){
         console.log(this.props, this.props.timeline)
+        let dataArray= []
+        let graphTitle
+        if(!!this.props.user){
+            
+            console.log(this.props.user)
+            api.getUserWeights(this.props.user.id)
+            .then(json =>
+                {
+                    console.log(json.data)
+                    dataArray.push(["Date", "Recorded Weight"])
+                    
+                    dataArray.push(['2020-03-30', 2008])
+                    json.data.forEach(element => {
+                        let data = []
+                        let date = element.attributes.date.toString()
+                        console.log(date)
+                        data.push(date)
+                        data.push(element.attributes.current_weight)
+                        dataArray.push(data)
+                        console.log(data)
+                    })
+                    console.log(dataArray)
+                })
+            
+            if(!this.props.timeline || (!!this.props.timeline && this.props.timeline === "week")){
+                
+                graphTitle = 'This Week\'s Calorie Intake Breakdown'
+    
+            } else if(!!this.props.timeline && this.props.timeline === "month") {
+                graphTitle = 'This Month\'s Calorie Intake Breakdown'
+            } else if(!!this.props.timeline && this.props.timeline === "year"){
+                graphTitle = 'This Year\'s Calorie Intake Breakdown'
+                dataArray.push(['Date', 'Recorded Weight'])
+                dataArray.push(['3/30/2020', 188])
+            }
+        }
+        
+
 
         if(!!this.props.user){
             console.log(this.props.user.id)
-            api.getUserWeights(this.props.user.id)
-            .then(json => console.log(json))
+            if(this.props.timeline === "week"){
+
+            } else if (this.props.timeline === "month"){
+
+            } else if (this.props.timeline === "year"){
+
+            }
+           
         }
         
-        let dataArray = []
-        let graphTitle 
-        if(!this.props.timeline || (!!this.props.timeline && this.props.timeline === "week")){
-            dataArray.push(['Date', 'Recorded Weight'])
-            dataArray.push(['3/30/2020', 188])
-            graphTitle = 'This Week\'s Calorie Intake Breakdown'
-
-        } else if(!!this.props.timeline && this.props.timeline === "month") {
-            graphTitle = 'This Month\'s Calorie Intake Breakdown'
-            dataArray.push(['Date', 'Recorded Weight'])
-            dataArray.push(['3/30/2020', 188])
-            dataArray.push(['4/14/2020', 177])
-
-        } else if(!!this.props.timeline && this.props.timeline === "year"){
-            graphTitle = 'This Year\'s Calorie Intake Breakdown'
-            dataArray.push(['Date', 'Recorded Weight'])
-            dataArray.push(['3/30/2020', 188])
-        }
         
         return(
+            
             <div>
                 
                 <br></br>
