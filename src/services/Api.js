@@ -248,7 +248,7 @@ const getUserNotes = (userId, date) => {
     .then(response => response.json())
 }
 
-const getUserWeights = (id, date) => {
+const getUserWeights = (id) => {
     console.log(id)
     return fetch(`${API_ROOT}weights?user_id=${id}`,
     {

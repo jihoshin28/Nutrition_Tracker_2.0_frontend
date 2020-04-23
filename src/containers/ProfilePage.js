@@ -8,7 +8,8 @@ export default class ProfilePage extends Component {
         this.state = {
             current_user: null,
             fields: [],
-            graph_type: null
+            graph_type: null,
+            weights: null
         }
     }
 
@@ -16,13 +17,19 @@ export default class ProfilePage extends Component {
         const token = localStorage.getItem('token');
         if (token) {
             api.getCurrentUser().then(json => {
-            let user = json.user.data.attributes ;
-                api.getUser(user.id).then(json => {
-                    console.log(json.data.attributes)
+            let user = json.user.data.attributes;
+            this.setState({
+                current_user: user
+            })
+            console.log(this.state.current_user)
+                api.getUserWeights(user.id).then(json => {
+                    let userWeights = []
+                    console.log(json.data)
+                    json.data.forEach(element => userWeights.push(element.attributes))
                     this.setState({
-                        current_user: json.data.attributes
+                        weights: userWeights
                     })
-                    
+                    console.log(this.state.weights)
                 })
             })
             
@@ -141,7 +148,7 @@ export default class ProfilePage extends Component {
                             <option value = "year">Year</option>
                         </select>
 
-                        <WeightGraph user = {current_user} timeline = {this.state.fields.timeline}/>
+                        <WeightGraph weights = {this.state.weights} user = {current_user} timeline = {this.state.fields.timeline}/>
                     </div>
                 
                 <br></br>

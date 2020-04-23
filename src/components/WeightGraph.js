@@ -17,58 +17,39 @@ export class WeightGraph extends Component {
 
     render(){
         console.log(this.props, this.props.timeline)
-        let dataArray= []
-        let graphTitle
-        if(!!this.props.user){
+        let dataArray = []
+        dataArray.push(["Date" , "Current Weight"])
+        // dataArray.push(["3/23", 0])
+        let graphTitle = "Weight Recordings"
+        if(!!this.props.user && !!this.props.weights){
             
-            console.log(this.props.user)
-            api.getUserWeights(this.props.user.id)
-            .then(json =>
-                {
-                    console.log(json.data)
-                    dataArray.push(["Date", "Recorded Weight"])
-                    
-                    dataArray.push(['2020-03-30', 2008])
-                    json.data.forEach(element => {
-                        let data = []
-                        let date = element.attributes.date.toString()
-                        console.log(date)
-                        data.push(date)
-                        data.push(element.attributes.current_weight)
-                        dataArray.push(data)
-                        console.log(data)
-                    })
-                    console.log(dataArray)
-                })
-            
-            if(!this.props.timeline || (!!this.props.timeline && this.props.timeline === "week")){
+            console.log(this.props)
+            this.props.weights.forEach(element => {
+                let data = []
+                data.push(element.date)
+                data.push(element.current_weight)
+                dataArray.push(data)
                 
-                graphTitle = 'This Week\'s Calorie Intake Breakdown'
-    
-            } else if(!!this.props.timeline && this.props.timeline === "month") {
-                graphTitle = 'This Month\'s Calorie Intake Breakdown'
-            } else if(!!this.props.timeline && this.props.timeline === "year"){
-                graphTitle = 'This Year\'s Calorie Intake Breakdown'
-                dataArray.push(['Date', 'Recorded Weight'])
-                dataArray.push(['3/30/2020', 188])
-            }
+            })
+            
+            // if(!this.props.timeline || (!!this.props.timeline && this.props.timeline === "week")){  
+            //     graphTitle = 'This Week\'s Weight Records'
+            //     let sortedArray = dataArray.sort((a, b) => {
+            //         console.log(a, b)
+            //         return parseFloat(a[0].split("-").join("")) - parseFloat(b[0].split(":").join(""))})
+            //     console.log("sorted", sortedArray)
+            // } else if(!!this.props.timeline && this.props.timeline === "month") {
+            //     graphTitle = 'This Month\'s Calorie Intake Breakdown'
+            // } else if(!!this.props.timeline && this.props.timeline === "year"){
+            //     graphTitle = 'This Year\'s Calorie Intake Breakdown'
+            // }
         }
-        
-
-
-        if(!!this.props.user){
-            console.log(this.props.user.id)
-            if(this.props.timeline === "week"){
-
-            } else if (this.props.timeline === "month"){
-
-            } else if (this.props.timeline === "year"){
-
-            }
-           
-        }
-        
-        
+        let sortedArray = dataArray.sort((a, b) => {
+                    console.log(parseFloat(a[0].split("-").join("")), b[1])
+                    return parseFloat(a[0].split("-").join("")) - parseFloat(b[0].split("-").join(""))
+                    // return a[1] - b[1]
+                })
+        console.log(sortedArray)
         return(
             
             <div>
@@ -81,7 +62,7 @@ export class WeightGraph extends Component {
                     height={'600px'}
                     chartType="AreaChart"
                     loader={<div>Loading Chart</div>}
-                    data= {dataArray}
+                    data = {dataArray}
                     // *Example Data*
                     // ["Nutrient", "Overall Calorie Intake"],
                     // ["3/23", 0],
