@@ -23,26 +23,35 @@ export class WeightGraph extends Component {
         let graphTitle = "Weight Recordings"
         if(!!this.props.user && !!this.props.weights){
             
-            console.log(this.props)
-            this.props.weights.forEach(element => {
-                let data = []
-                data.push(element.date)
-                data.push(element.current_weight)
-                dataArray.push(data)
-                
-            })
-            
-            // if(!this.props.timeline || (!!this.props.timeline && this.props.timeline === "week")){  
-            //     graphTitle = 'This Week\'s Weight Records'
-            //     let sortedArray = dataArray.sort((a, b) => {
-            //         console.log(a, b)
-            //         return parseFloat(a[0].split("-").join("")) - parseFloat(b[0].split(":").join(""))})
-            //     console.log("sorted", sortedArray)
-            // } else if(!!this.props.timeline && this.props.timeline === "month") {
-            //     graphTitle = 'This Month\'s Calorie Intake Breakdown'
-            // } else if(!!this.props.timeline && this.props.timeline === "year"){
-            //     graphTitle = 'This Year\'s Calorie Intake Breakdown'
-            // }
+            if(!this.props.timeline || (!!this.props.timeline && this.props.timeline === "week")){  
+                console.log(this.props)
+                this.props.weights.forEach(element => {
+                    let data = []
+                    data.push(element.date)
+                    data.push(element.current_weight)
+                    dataArray.push(data)
+                })
+                graphTitle = 'This Week\'s Weight Records'
+            } else if(!!this.props.timeline && this.props.timeline === "month") {
+                console.log(this.props)
+                this.props.weights.forEach(element => {
+                    let data = []
+                    data.push(element.date)
+                    data.push(element.current_weight)
+                    dataArray.push(data)
+                })
+                graphTitle = 'This Month\'s Weight Records'
+            } else if(!!this.props.timeline && this.props.timeline === "year"){
+                console.log(this.props)
+                this.props.weights.forEach(element => {
+                    let data = []
+                    data.push(element.date)
+                    data.push(element.current_weight)
+                    dataArray.push(data)
+                    
+                })
+                graphTitle = 'This Year\'s Weight Records'
+            }
         }
         let sortedArray = dataArray.sort((a, b) => {
                     console.log(parseFloat(a[0].split("-").join("")), b[1])
