@@ -62,6 +62,7 @@ export class WeightGraph extends Component {
                 graphTitle = 'This Year\'s Weight Records'
             }
         }
+        //console.log(testArray)
         console.log(dataArray)
         let sortedArray = dataArray.sort((a, b) => {
                     console.log(parseFloat(a[0].split("-").join("")), b[1])
