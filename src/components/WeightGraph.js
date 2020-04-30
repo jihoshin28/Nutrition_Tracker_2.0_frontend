@@ -39,14 +39,17 @@ export class WeightGraph extends Component {
                 data.push(element.date)
                 data.push(element.current_weight)
                 dataArray.push(data)
-                
             })
             
-            if(!this.props.timeline || (!!this.props.timeline && this.props.timeline === "week")){  
-                dataArray = dataArray.filter(element => {
-                    return element[0].split("-")[2] == 29
-                    // return (element[0].split("-")[2] < weekEnd && element[0].split("-")[2] > weekStart);
-                })
+            if(!this.props.timeline || (!!this.props.timeline && this.props.timeline === "week")){
+                let weekArray = []
+                for(let i = 0; i < dataArray.length; i++){
+                    if ((!!weekDays.find(element => element === dataArray[i][0]) == true)){
+                        weekArray.push(dataArray[i])
+                    }   
+                }
+                dataArray = weekArray
+
                 dataArray.unshift(["Date" , "Current Weight"])
                 console.log(dataArray)
 
