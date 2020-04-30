@@ -231,13 +231,13 @@ const deleteUserNote = (id) => {
 }
 
 const getUserFoods = (userId, date) => {
-    console.log(userId, date)
+    // console.log(userId, date)
     return fetch(`${API_ROOT}food_posts?user_id=${userId}&date=${date}`, {headers: headers})
     .then(response => response.json())
 }
 
 const getUserExercises = (userId, date) => {
-    console.log(userId, date)
+    // console.log(userId, date)
     return fetch(`${API_ROOT}exercise_posts?user_id=${userId}&date=${date}`, {headers: headers})
     .then(response => response.json())
 }

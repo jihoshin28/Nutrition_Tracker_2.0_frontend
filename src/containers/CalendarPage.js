@@ -26,8 +26,6 @@ export default class CalendarPage extends Component {
                 let weekFoodData = []
                 let weekExerciseData = []
                 let getWeek = () => {
-            
-                  console.log(user.id)
                   for(let i = 0; i < 7; i++){
                       let curr = new Date;
                       let first = curr.getDate() - curr.getDay() + i 
@@ -46,7 +44,7 @@ export default class CalendarPage extends Component {
                         this.setState({
                           weekFoodData: weekFoodData
                         })
-                        console.log(this.state.weekFoodData)
+                        // console.log(this.state.weekFoodData)
                       })
 
                       api.getUserExercises(user.id, date)
@@ -128,7 +126,7 @@ export default class CalendarPage extends Component {
       
     }
     
-    console.log(foodData)
+    // console.log(foodData)
     graph = <div className ="bar-graph-div">
                 <Chart
                     width={'1285px'}
