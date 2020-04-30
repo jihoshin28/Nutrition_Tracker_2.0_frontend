@@ -18,14 +18,15 @@ export class WeightGraph extends Component {
     render(){
         console.log(this.props, this.props.timeline)
         let dataArray = []
-        let today = new Date();
-        let month = today.getMonth() + 1
-        let year = today.getFullYear()
+        let curr = new Date;
+        let month = curr.getMonth() + 1
+        let year = curr.getFullYear()
         let weekDays = []
         
         for(let i = 0; i < 7; i++){
-            let weekDay = today.getDate() + i
-            weekDays.push(weekDay)
+            let first = curr.getDate() - curr.getDay() + i 
+            let date = new Date(curr.setDate(first)).toISOString().slice(0, 10)
+            weekDays.push(date)
             
         }
         console.log(weekDays)
@@ -43,11 +44,12 @@ export class WeightGraph extends Component {
             
             if(!this.props.timeline || (!!this.props.timeline && this.props.timeline === "week")){  
                 dataArray = dataArray.filter(element => {
-                    return (!!element[0].split("-")[2] === 24)
+                    return element[0].split("-")[2] == 29
                     // return (element[0].split("-")[2] < weekEnd && element[0].split("-")[2] > weekStart);
                 })
                 dataArray.unshift(["Date" , "Current Weight"])
                 console.log(dataArray)
+
                 graphTitle = 'This Week\'s Weight Records'
             } else if(!!this.props.timeline && this.props.timeline === "month") {
                 dataArray = dataArray.filter(element => {
