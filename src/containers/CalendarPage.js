@@ -25,14 +25,13 @@ export default class CalendarPage extends Component {
                 let user = json.user.data.attributes ;
                 let weekFoodData = []
                 let weekExerciseData = []
-                let today = new Date();
-                let day = today.getDay();
-                let getWeek = (day) => {
-                  console.log(today.getDate())
-                  console.log(today.getDay())
+                let getWeek = () => {
+            
                   console.log(user.id)
                   for(let i = 0; i < 7; i++){
-                      let date = (today.getFullYear() + '-' + (today.getMonth() + 1 ) + '-' + (today.getDate() - day + 1 + i))
+                      let curr = new Date;
+                      let first = curr.getDate() - curr.getDay() + i 
+                      let date = new Date(curr.setDate(first)).toISOString().slice(0, 10)
                     
                       api.getUserFoods(user.id, date)
                       .then(json => {
@@ -69,7 +68,7 @@ export default class CalendarPage extends Component {
                   
                   
                 }
-                getWeek(day)
+                getWeek()
               })
     }
     
@@ -100,7 +99,10 @@ export default class CalendarPage extends Component {
     foodData.push(['Nutrient', 'Overall Calorie Intake'])
     for(let i = 0; i < 7; i++){
       let array = []
-      let date = (today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + (today.getDate() - day + 1 + i))
+      let curr = new Date
+      let first = curr.getDate() - curr.getDay() + i 
+      let date = new Date(curr.setDate(first)).toISOString().slice(0, 10)
+
       let filteredFoods = this.state.weekFoodData.filter(food => food.date === date).map(food => food.calories)
       let filteredExercises = this.state.weekExerciseData.filter(exercise => exercise.date === date).map(exercise => exercise.calories)
 

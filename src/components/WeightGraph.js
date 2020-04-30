@@ -43,6 +43,7 @@ export class WeightGraph extends Component {
             
             if(!this.props.timeline || (!!this.props.timeline && this.props.timeline === "week")){  
                 dataArray = dataArray.filter(element => {
+                    return (!!element[0].split("-")[2] === 24)
                     // return (element[0].split("-")[2] < weekEnd && element[0].split("-")[2] > weekStart);
                 })
                 dataArray.unshift(["Date" , "Current Weight"])
