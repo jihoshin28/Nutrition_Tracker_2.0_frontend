@@ -81,6 +81,7 @@ export default class ProfilePage extends Component {
         let userData 
         let user
         let current_user
+        let yearSelect
             if(!!this.state.current_user){
                 // console.log(this.state.current_user)
                 let image 
@@ -104,9 +105,23 @@ export default class ProfilePage extends Component {
                     <p>Diet: {this.state.current_user.diet_type}</p>
                     <p>Bio: {this.state.current_user.bio}</p>
                 </div>
+                if(this.state.fields.timeline === "year"){
+                    yearSelect = 
+                    <div>
+                        <h2>Enter a Year</h2>
+                        <div>
+                            <input type= "integer"></input>
+                        </div>      
+                    </div>
+                } else {
+                    yearSelect = <div></div>
+                }
             } else {
                 userData = 'Loading...'
             }
+
+            
+
         return (
             <div>
                 <br></br>
@@ -147,10 +162,11 @@ export default class ProfilePage extends Component {
                             <option value = "month">Month</option>
                             <option value = "year">Year</option>
                         </select>
+                        {yearSelect}
 
                         <WeightGraph weights = {this.state.weights} user = {current_user} timeline = {this.state.fields.timeline}/>
                     </div>
-                
+
                 <br></br>
                 
             </div>

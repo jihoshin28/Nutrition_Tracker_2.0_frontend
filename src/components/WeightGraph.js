@@ -11,10 +11,6 @@ export class WeightGraph extends Component {
         }
     }
 
-    graphData = (type) => {
-        
-    }
-
     render(){
         console.log(this.props, this.props.timeline)
         let dataArray = []
@@ -71,15 +67,16 @@ export class WeightGraph extends Component {
         //console.log(testArray)
         console.log(dataArray)
         let sortedArray = dataArray.sort((a, b) => {
-                    console.log(parseFloat(a[0].split("-").join("")), b[1])
-                    return parseFloat(a[0].split("-").join("")) - parseFloat(b[0].split("-").join(""))
+            console.log(parseFloat(a[0].split("-").join("")), b[1])
+            return parseFloat(a[0].split("-").join("")) - parseFloat(b[0].split("-").join(""))
                     // return a[1] - b[1]
-                })
+        })
+        
         console.log(sortedArray)
         return(
             
             <div>
-                
+                <div></div>
                 <br></br>
                 <div className = "bar-graph-div">
                 <option></option>
