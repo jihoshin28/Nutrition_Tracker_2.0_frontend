@@ -110,7 +110,7 @@ export default class ProfilePage extends Component {
                     <div>
                         <h2>Enter a Year</h2>
                         <div>
-                            <input type= "integer"></input>
+                            <input onChange = {this.handleChange}type= "integer"></input>
                         </div>      
                     </div>
                 } else {
