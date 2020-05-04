@@ -20,7 +20,8 @@ export class WeightGraph extends Component {
         let weekDays = []
         
         for(let i = 0; i < 7; i++){
-            let first = curr.getDate() - curr.getDay() + i 
+            let first = curr.getDate() - curr.getDay() -1 + i 
+            console.log(first)
             let date = new Date(curr.setDate(first)).toISOString().slice(0, 10)
             weekDays.push(date)
             
@@ -39,7 +40,7 @@ export class WeightGraph extends Component {
                 dataArray.push(data)
             })
           
-            let graph 
+         
             if(!this.props.timeline || (!!this.props.timeline && this.props.timeline === "week")){
                 let weekArray = []
                 for(let i = 0; i < dataArray.length; i++){
@@ -65,9 +66,7 @@ export class WeightGraph extends Component {
                 })
                 dataArray.unshift(["Date" , "Current Weight"])
                 graphTitle = 'This Year\'s Weight Records'
-                if (typeof dataArray[0] == 'string'){
-                    console.log('JIFSDFODSIFO')
-                }
+                
             } 
 
         } 
