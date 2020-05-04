@@ -27,16 +27,19 @@ export class WeightGraph extends Component {
         }
         console.log(weekDays)
         // dataArray.push(["3/23", 0])
+        let graph 
         let graphTitle = "Weight Recordings"
         if(!!this.props.user && !!this.props.weights){
             console.log(this.props)
+            // graph = "Loading"
             this.props.weights.forEach(element => {
                 let data = []
                 data.push(element.date)
                 data.push(element.current_weight)
                 dataArray.push(data)
             })
-            
+          
+            let graph 
             if(!this.props.timeline || (!!this.props.timeline && this.props.timeline === "week")){
                 let weekArray = []
                 for(let i = 0; i < dataArray.length; i++){
@@ -62,30 +65,28 @@ export class WeightGraph extends Component {
                 })
                 dataArray.unshift(["Date" , "Current Weight"])
                 graphTitle = 'This Year\'s Weight Records'
-            }
-        }
-        //console.log(testArray)
-        console.log(dataArray)
-        let sortedArray = dataArray.sort((a, b) => {
-            console.log(parseFloat(a[0].split("-").join("")), b[1])
-            return parseFloat(a[0].split("-").join("")) - parseFloat(b[0].split("-").join(""))
-                    // return a[1] - b[1]
-        })
-        
-        console.log(sortedArray)
-        return(
+                if (typeof dataArray[0] == 'string'){
+                    console.log('JIFSDFODSIFO')
+                }
+            } 
+
+        } 
+        if(!dataArray[1]){
+            graph = "No Data Posted!"
+        } else {
+            let sortedArray = dataArray.sort((a, b) => {
+                console.log(parseFloat(a[0].split("-").join("")), b[1])
+                return parseFloat(a[0].split("-").join("")) - parseFloat(b[0].split("-").join(""))
+                        // return a[1] - b[1]
+            })
             
-            <div>
-                <div></div>
-                <br></br>
-                <div className = "bar-graph-div">
-                <option></option>
+            graph = 
                 <Chart
                     width={'1285px'}
                     height={'600px'}
                     chartType="AreaChart"
                     loader={<div>Loading Chart</div>}
-                    data = {dataArray}
+                    data = {sortedArray}
                     // *Example Data*
                     // ["Nutrient", "Overall Calorie Intake"],
                     // ["3/23", 0],
@@ -96,16 +97,27 @@ export class WeightGraph extends Component {
                     // ["3/28", 0],
                     // ["3/29", 0]
                     options={{
-                      title: graphTitle,
-                      hAxis: { title: 'Time of Day', titleTextStyle: { color: '#333' } },
-                      vAxis: { title: 'Calories', minValue: 0 },
-                      // For the legend to fit, we make the chart area smaller
-                      chartArea: { width: '50%', height: '70%' },
-                      // lineWidth: 25
+                    title: graphTitle,
+                    hAxis: { title: 'Time of Day', titleTextStyle: { color: '#333' } },
+                    vAxis: { title: 'Calories', minValue: 0 },
+                    // For the legend to fit, we make the chart area smaller
+                    chartArea: { width: '50%', height: '70%' },
+                    // lineWidth: 25
                     }}
                     // For tests
                     rootProps={{ 'data-testid': '1' }}
-                  />
+                />
+            }
+        //console.log(testArray)
+    
+        return(
+            
+            <div>
+                
+                <br></br>
+                <div className = "bar-graph-div">
+                <option></option>
+                {graph}
             </div>
             </div>
         )

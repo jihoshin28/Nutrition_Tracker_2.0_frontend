@@ -92,7 +92,7 @@ export default class CalendarPage extends Component {
     graph = "No Data Posted!"
   } else {
     let today = new Date();
-    let day = today.getDay();
+    // let day = today.getDay();
     let foodData = []
     foodData.push(['Nutrient', 'Overall Calorie Intake'])
     for(let i = 0; i < 7; i++){
