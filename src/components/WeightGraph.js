@@ -40,7 +40,7 @@ export class WeightGraph extends Component {
                 dataArray.push(data)
             })
           
-         
+            
             if(!this.props.timeline || (!!this.props.timeline && this.props.timeline === "week")){
                 let weekArray = []
                 for(let i = 0; i < dataArray.length; i++){
@@ -56,14 +56,14 @@ export class WeightGraph extends Component {
                 graphTitle = 'This Week\'s Weight Records'
             } else if(!!this.props.timeline && this.props.timeline === "month") {
                 dataArray = dataArray.filter(element => {
-                    return element[0].split("-")[1] === month;
+                    return element[0].split("-")[1] == month;
                 })
                 dataArray.unshift(["Date" , "Current Weight"])
                 graphTitle = 'This Month\'s Weight Records'
-            } else if(!!this.props.timeline && !!this.props.year){
+            } else if(!!this.props.year){
                 console.log(parseInt(this.props.year, 10))
                 dataArray = dataArray.filter(element => {
-                    return element[0].split("-")[0] === parseInt(this.props.year, 10);
+                    return element[0].split("-")[0] == parseInt(this.props.year, 10);
                 })
                 dataArray.unshift(["Date" , "Current Weight"])
                 graphTitle = 'This Year\'s Weight Records'
