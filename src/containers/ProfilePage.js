@@ -77,6 +77,15 @@ export default class ProfilePage extends Component {
         .then(json => console.log(json))
     }
 
+    handleYear = (e)=> {
+        e.preventDefault();
+      
+        this.setState({
+            year: e.target.children[0].value
+        })
+
+    }
+
     render() {
         let userData 
         let user
@@ -110,7 +119,10 @@ export default class ProfilePage extends Component {
                     <div>
                         <h2>Enter a Year</h2>
                         <div>
-                            <input onChange = {this.handleChange}type= "integer"></input>
+                            <form onSubmit = {this.handleYear}>
+                                <input type= "integer"></input>
+                                <input type = "submit"></input>
+                            </form>
                         </div>      
                     </div>
                 } else {
@@ -164,7 +176,7 @@ export default class ProfilePage extends Component {
                         </select>
                         {yearSelect}
 
-                        <WeightGraph weights = {this.state.weights} user = {current_user} timeline = {this.state.fields.timeline}/>
+                        <WeightGraph weights = {this.state.weights} user = {current_user} timeline = {this.state.fields.timeline} year = {this.state.year}/>
                     </div>
 
                 <br></br>

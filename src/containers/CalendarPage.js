@@ -27,7 +27,7 @@ export default class CalendarPage extends Component {
                 let weekExerciseData = []
                 let getWeek = () => {
                   for(let i = 0; i < 7; i++){
-                      let curr = new Date;
+                      let curr = new Date();
                       let first = curr.getDate() - curr.getDay() + i 
                       let date = new Date(curr.setDate(first)).toISOString().slice(0, 10)
                     

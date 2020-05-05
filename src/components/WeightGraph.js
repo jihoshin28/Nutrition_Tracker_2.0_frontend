@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Chart } from "react-google-charts";
-import api from '../services/Api.js'
+// import api from '../services/Api.js'
 
 export class WeightGraph extends Component {
     constructor(props){
@@ -14,13 +14,13 @@ export class WeightGraph extends Component {
     render(){
         console.log(this.props, this.props.timeline)
         let dataArray = []
-        let curr = new Date;
+        let curr = new Date();
         let month = curr.getMonth() + 1
         let year = curr.getFullYear()
         let weekDays = []
         
         for(let i = 0; i < 7; i++){
-            let first = curr.getDate() - curr.getDay() -1 + i 
+            let first = curr.getDate() - curr.getDay() + i 
             console.log(first)
             let date = new Date(curr.setDate(first)).toISOString().slice(0, 10)
             weekDays.push(date)
@@ -44,7 +44,7 @@ export class WeightGraph extends Component {
             if(!this.props.timeline || (!!this.props.timeline && this.props.timeline === "week")){
                 let weekArray = []
                 for(let i = 0; i < dataArray.length; i++){
-                    if ((!!weekDays.find(element => element === dataArray[i][0]) == true)){
+                    if ((!!weekDays.find(element => element === dataArray[i][0]) === true)){
                         weekArray.push(dataArray[i])
                     }   
                 }
@@ -56,13 +56,14 @@ export class WeightGraph extends Component {
                 graphTitle = 'This Week\'s Weight Records'
             } else if(!!this.props.timeline && this.props.timeline === "month") {
                 dataArray = dataArray.filter(element => {
-                    return element[0].split("-")[1] == month;
+                    return element[0].split("-")[1] === month;
                 })
                 dataArray.unshift(["Date" , "Current Weight"])
                 graphTitle = 'This Month\'s Weight Records'
-            } else if(!!this.props.timeline && this.props.timeline === "year"){
+            } else if(!!this.props.timeline && !!this.props.year){
+                console.log(parseInt(this.props.year, 10))
                 dataArray = dataArray.filter(element => {
-                    return element[0].split("-")[0] == year;
+                    return element[0].split("-")[0] === parseInt(this.props.year, 10);
                 })
                 dataArray.unshift(["Date" , "Current Weight"])
                 graphTitle = 'This Year\'s Weight Records'
