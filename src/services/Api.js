@@ -1,4 +1,4 @@
-const API_ROOT = `http://localhost:3000/api/v1/`;
+const API_ROOT = `https://nutrition-tracker-7.herokuapp.com//api/v1/`;
 
 let token = localStorage.getItem("token")
 
