@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7df5b6c785df8cadb4176f4e4d62d134",
+    "revision": "9f632a7be07524fed151f095c4c80a5d",
     "url": "/Nutrition_Tracker_2.0_frontend/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Nutrition_Tracker_2.0_frontend/static/css/2.c51b6406.chunk.css"
   },
   {
-    "revision": "0ed7d24ab215fe80a15b",
+    "revision": "aece2a93ba7835508e1e",
     "url": "/Nutrition_Tracker_2.0_frontend/static/css/main.25db4726.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Nutrition_Tracker_2.0_frontend/static/js/2.e15ad03a.chunk.js.LICENSE"
   },
   {
-    "revision": "0ed7d24ab215fe80a15b",
-    "url": "/Nutrition_Tracker_2.0_frontend/static/js/main.9b4ea4dd.chunk.js"
+    "revision": "aece2a93ba7835508e1e",
+    "url": "/Nutrition_Tracker_2.0_frontend/static/js/main.5d1bb873.chunk.js"
   },
   {
     "revision": "9fa641999f454f167a59",
