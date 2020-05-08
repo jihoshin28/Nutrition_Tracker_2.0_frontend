@@ -72,7 +72,7 @@ export class WeightGraph extends Component {
 
         } 
         if(!dataArray[1]){
-            graph = "No Data Posted!"
+            graph = "No Data!"
         } else {
             let sortedArray = dataArray.sort((a, b) => {
                 console.log(parseFloat(a[0].split("-").join("")), b[1])

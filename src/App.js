@@ -45,6 +45,7 @@ componentDidMount() {
 
 handleLogin = json => {
   const currentUser = json;
+  console.log(currentUser)
   localStorage.setItem('token', currentUser.jwt );
   this.setState({ currentUser: {username: currentUser.user.data.attributes.username, id: currentUser.user.data.id }});
 }

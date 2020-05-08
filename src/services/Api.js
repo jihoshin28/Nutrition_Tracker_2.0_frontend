@@ -326,4 +326,4 @@ export default {
     deleteUserExercise,
     deleteUserFood,
     deleteUserNote
-}
+} 
