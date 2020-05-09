@@ -12,32 +12,28 @@ export class Home extends Component {
                     <h3>Welcome to Nutrition Tracker 2.0</h3>
                     <p>Hello User!</p>
                     <p> 
-                        With busy lives it's often difficult to keep track of some of
-                        the more basic things in our lives like when a certain project is due.
-                        Well, there are calendar apps for that. For anything related to tracking
-                        nutrition, there's Nutrition Tracker.
+                        Nutrition Tracker 2.0 is a nutrition tracking app, which specializes in displaying 
+                        vital nutritional information. It's difficult to see the full picutre when using nutrition
+                        applications, but with Nutrition Tracker 2.0, you have all of your data organized by days,
+                        weeks, into graphs that include calorie intake, macronutrients, and everything that would
+                        show up on a typical nutrition facts label.
+
                     </p>
                     <p>
                         Nutrition Tracker 2.0 utilizes the Nutritionix database, which has access
-                        the nutrition information of almost a million different food items. It also
-                        has access to vast array of exercise information, so you can track how many
+                        to nutrition information of almost a million different food items. It also
+                        has access to a vast array of exercise information, so you can track how many
                         calories you burned on a job or a workout at the gym. Nutrition Tracker
-                        makes use of natural language analysis, so you can tell our application exactly
-                        what you ate or what your exercise routine was, and it will understand what data 
-                        needs to recorded. An example sentence would be something like: "I ate 2 bananas,
-                        and a chicken salad sandwich". The Nutritionix API understands that you ate 2 
-                        bananas and a chicken salad sandwich.
+                        makes use of natural language analysis, so you can type into the input box your exercises and
+                        foods into plain English, and it will convert your input into relevant data. An example sentence 
+                        would be something like: "I ate 2 bananas, and a chicken salad sandwich".
                     </p>
                     <p>
                         Studies show that there are benefits to keeping track of how many calories
-                        you're consuming and what food you eat. Without the proper tool, though, it 
-                        would not be worth the time to write everything down on a piece of paper. Don't 
-                        worry, just tell the NutritionTracker app and you'll easily record all the info, with 
-                        helpful graphs to visualize the data. 
+                        you're consuming and what food you eat. With the help of the NutritionTracker app,
+                        you can easily record and observe important info, to help you make accurate decisions.
                     </p>
-                    <p>
-                        Happy Tracking!
-                    </p>
+
                     </div>
                     
                 </div>
