@@ -25,7 +25,7 @@ export class SignUp extends Component {
             this.setState({ error: true })
           } else {
             this.props.handleLogin(json);
-            this.props.history.push('/todaypage');
+            this.props.history.push('/Nutrition_Tracker_2.0_frontend/todaypage');
           };
         });
       };
