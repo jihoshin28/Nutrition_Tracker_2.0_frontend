@@ -15,20 +15,20 @@ function NavBar(props) {
                 <div>
                     <li className= "nav">Nutrition Tracker</li>
                 
-                    <li className="nav"><NavLink to='/Nutrition_Tracker_2.0/todaypage'>Today</NavLink></li>
-                    <li className="nav"><NavLink to="/Nutrition_Tracker_2.0/calendar">Calendar</NavLink></li>
-                    <li className="nav"><NavLink to="/Nutrition_Tracker_2.0/profile">Profile</NavLink></li>
-                    <li className="nav"><NavLink to="/Nutrition_Tracker_2.0/about">About</NavLink></li> 
-                    <li className="nav"><NavLink to="/Nutrition_Tracker_2.0/post">Post</NavLink></li> 
-                    <li className="navLogout"><NavLink to="/Nutrition_Tracker_2.0/about" onClick={props.handleLogout}>Logout</NavLink> </li> 
+                    <li className="nav"><NavLink to='/Nutrition_Tracker_2.0_frontend/todaypage'>Today</NavLink></li>
+                    <li className="nav"><NavLink to="/Nutrition_Tracker_2.0_frontend/calendar">Calendar</NavLink></li>
+                    <li className="nav"><NavLink to="/Nutrition_Tracker_2.0_frontend/profile">Profile</NavLink></li>
+                    <li className="nav"><NavLink to="/Nutrition_Tracker_2.0_frontend/about">About</NavLink></li> 
+                    <li className="nav"><NavLink to="/Nutrition_Tracker_2.0_frontend/post">Post</NavLink></li> 
+                    <li className="navLogout"><NavLink to="/Nutrition_Tracker_2.0_frontend/about" onClick={props.handleLogout}>Logout</NavLink> </li> 
                 </div>
                 
             ) : (
                 <div>
                     <li className= "nav">Nutrition Tracker</li>
-                    <li className="nav"><NavLink to="/Nutrition_Tracker_2.0/login">Login</NavLink></li> 
-                    <li className="nav"><NavLink to="/Nutrition_Tracker_2.0/signup">Signup</NavLink></li>
-                    <li className="nav"><NavLink to="/Nutrition_Tracker_2.0/about">About</NavLink></li> 
+                    <li className="nav"><NavLink to="/Nutrition_Tracker_2.0_frontend/login">Login</NavLink></li> 
+                    <li className="nav"><NavLink to="/Nutrition_Tracker_2.0_frontend/signup">Signup</NavLink></li>
+                    <li className="nav"><NavLink to="/Nutrition_Tracker_2.0_frontend/about">About</NavLink></li> 
                 </div>
              )}
             </ul>

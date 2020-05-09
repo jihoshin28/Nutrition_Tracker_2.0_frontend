@@ -63,22 +63,22 @@ handleLogout = () => {
           <Router>
             <div className='app'>
             <NavBar handleLogout={this.handleLogout} currentUser = {this.state.currentUser}/>
-            <Route exact path ="/Nutrition_Tracker_2.0/" render={(props) => <About {...props} currentuser ={this.state.currentUser}/>} />
-            <Route exact path ="/Nutrition_Tracker_2.0/about" render={(props) => <About {...props} currentuser ={this.state.currentUser}/>} />
-            <Route exact path="/Nutrition_Tracker_2.0/login" render={(props) => <Login {...props} handleLogin={this.handleLogin}/>} />
-            <Route exact path="/Nutrition_Tracker_2.0/signup" render={(props) => <SignUp {...props} handleLogin={this.handleLogin}/>} />
-            <Route exact path="/Nutrition_Tracker_2.0/profile" render ={(props) => <ProfilePage {...props} handleLogout={this.handleLogout} currentUser={this.state.currentUser}/>} />
-            <Route exact path="/Nutrition_Tracker_2.0/daypage/:date" render = {(props) => <DayPage {...props} currentUser = {this.state.currentUser}/>}/>
-            <Route exact path="/Nutrition_Tracker_2.0/todaypage" render = {(props) => <TodayPage {...props} currentUser = {this.state.currentUser}/>}/>
-            <Route exact path="/Nutrition_Tracker_2.0/calendar" render = {(props) => <CalendarPage {...props} currentUser = {this.state.currentUser}/>}/>
-            <Route exact path="/Nutrition_Tracker_2.0/post" render = {(props) => <PostPage {...props} currentUser = {this.state.currentUser}/>}/>
-            <Route exact path="/Nutrition_Tracker_2.0/postfood" render = {(props) => <PostFood {...props} currentUser = {this.state.currentUser}/>}/>
-            <Route exact path="/Nutrition_Tracker_2.0/postexercise" render = {(props) => <PostExercise {...props} currentUser = {this.state.currentUser}/>}/>
-            <Route exact path="/Nutrition_Tracker_2.0/postnote" render = {(props) => <PostNote {...props} currentUser = {this.state.currentUser}/>}/>
-            <Route exact path="/Nutrition_Tracker_2.0/editfood" render = {(props) => <EditFood {...props} currentUser = {this.state.currentUser}/>}/>
-            <Route exact path="/Nutrition_Tracker_2.0/editexercise" render = {(props) => <EditExercise {...props} currentUser = {this.state.currentUser}/>}/>
-            <Route exact path="/Nutrition_Tracker_2.0/editnote" render = {(props) => <EditNote {...props} currentUser = {this.state.currentUser}/>}/>
-            <Route exact path="/Nutrition_Tracker_2.0/edituser" render = {(props) => <EditUser {...props} currentUser = {this.state.currentUser}/>}/>
+            <Route exact path ="/Nutrition_Tracker_2.0_frontend/" render={(props) => <About {...props} currentuser ={this.state.currentUser}/>} />
+            <Route exact path ="/Nutrition_Tracker_2.0_frontend/about" render={(props) => <About {...props} currentuser ={this.state.currentUser}/>} />
+            <Route exact path="/Nutrition_Tracker_2.0_frontend/login" render={(props) => <Login {...props} handleLogin={this.handleLogin}/>} />
+            <Route exact path="/Nutrition_Tracker_2.0_frontend/signup" render={(props) => <SignUp {...props} handleLogin={this.handleLogin}/>} />
+            <Route exact path="/Nutrition_Tracker_2.0_frontend/profile" render ={(props) => <ProfilePage {...props} handleLogout={this.handleLogout} currentUser={this.state.currentUser}/>} />
+            <Route exact path="/Nutrition_Tracker_2.0_frontend/daypage/:date" render = {(props) => <DayPage {...props} currentUser = {this.state.currentUser}/>}/>
+            <Route exact path="/Nutrition_Tracker_2.0_frontend/todaypage" render = {(props) => <TodayPage {...props} currentUser = {this.state.currentUser}/>}/>
+            <Route exact path="/Nutrition_Tracker_2.0_frontend/calendar" render = {(props) => <CalendarPage {...props} currentUser = {this.state.currentUser}/>}/>
+            <Route exact path="/Nutrition_Tracker_2.0_frontend/post" render = {(props) => <PostPage {...props} currentUser = {this.state.currentUser}/>}/>
+            <Route exact path="/Nutrition_Tracker_2.0_frontend/postfood" render = {(props) => <PostFood {...props} currentUser = {this.state.currentUser}/>}/>
+            <Route exact path="/Nutrition_Tracker_2.0_frontend/postexercise" render = {(props) => <PostExercise {...props} currentUser = {this.state.currentUser}/>}/>
+            <Route exact path="/Nutrition_Tracker_2.0_frontend/postnote" render = {(props) => <PostNote {...props} currentUser = {this.state.currentUser}/>}/>
+            <Route exact path="/Nutrition_Tracker_2.0_frontend/editfood" render = {(props) => <EditFood {...props} currentUser = {this.state.currentUser}/>}/>
+            <Route exact path="/Nutrition_Tracker_2.0_frontend/editexercise" render = {(props) => <EditExercise {...props} currentUser = {this.state.currentUser}/>}/>
+            <Route exact path="/Nutrition_Tracker_2.0_frontend/editnote" render = {(props) => <EditNote {...props} currentUser = {this.state.currentUser}/>}/>
+            <Route exact path="/Nutrition_Tracker_2.0_frontend/edituser" render = {(props) => <EditUser {...props} currentUser = {this.state.currentUser}/>}/>
             </div>
           </Router>
       </header>
