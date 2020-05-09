@@ -13,14 +13,14 @@ export class Home extends Component {
                     <p>Hello User!</p>
                     <p> 
                         Nutrition Tracker 2.0 is a nutrition tracking app, which specializes in displaying 
-                        vital nutritional information. It's difficult to see the full picutre when using nutrition
-                        applications, but with Nutrition Tracker 2.0, you have all of your data organized by days,
-                        weeks, into graphs that include calorie intake, macronutrients, and everything that would
-                        show up on a typical nutrition facts label.
+                        vital nutritional information. It's difficult to see the full picture when tracking 
+                        nutrition info over time, but with Nutrition Tracker 2.0, you have all of your data organized by days,
+                        weeks, and into graphs that include calorie intake, macronutrients, and everything that would
+                        show up on a typical nutrition facts label. 
 
                     </p>
                     <p>
-                        Nutrition Tracker 2.0 utilizes the Nutritionix database, which has access
+                        Nutrition Tracker 2.0 also utilizes the Nutritionix database, which has access
                         to nutrition information of almost a million different food items. It also
                         has access to a vast array of exercise information, so you can track how many
                         calories you burned on a job or a workout at the gym. Nutrition Tracker
