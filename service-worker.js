@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Nutrition_Tracker_2.0_frontend/precache-manifest.e7aa03570cf323cc00955739ef8d8428.js"
+  "/Nutrition_Tracker_2.0_frontend/precache-manifest.9bba653150acfc6f172dc3a0f400d45c.js"
 );
 
 self.addEventListener('message', (event) => {
