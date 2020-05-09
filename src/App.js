@@ -63,6 +63,7 @@ handleLogout = () => {
           <Router>
             <div className='app'>
             <NavBar handleLogout={this.handleLogout} currentUser = {this.state.currentUser}/>
+            <Route exact path ="/Nutrition_Tracker_2.0/" render={(props) => <About {...props} currentuser ={this.state.currentUser}/>} />
             <Route exact path ="/Nutrition_Tracker_2.0/about" render={(props) => <About {...props} currentuser ={this.state.currentUser}/>} />
             <Route exact path="/Nutrition_Tracker_2.0/login" render={(props) => <Login {...props} handleLogin={this.handleLogin}/>} />
             <Route exact path="/Nutrition_Tracker_2.0/signup" render={(props) => <SignUp {...props} handleLogin={this.handleLogin}/>} />
