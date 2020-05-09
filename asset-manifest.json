@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Nutrition_Tracker_2.0_frontend/static/css/main.25db4726.chunk.css",
-    "main.js": "/Nutrition_Tracker_2.0_frontend/static/js/main.fd8a4b0d.chunk.js",
-    "main.js.map": "/Nutrition_Tracker_2.0_frontend/static/js/main.fd8a4b0d.chunk.js.map",
+    "main.js": "/Nutrition_Tracker_2.0_frontend/static/js/main.7912fce2.chunk.js",
+    "main.js.map": "/Nutrition_Tracker_2.0_frontend/static/js/main.7912fce2.chunk.js.map",
     "runtime-main.js": "/Nutrition_Tracker_2.0_frontend/static/js/runtime-main.3d872075.js",
     "runtime-main.js.map": "/Nutrition_Tracker_2.0_frontend/static/js/runtime-main.3d872075.js.map",
     "static/css/2.c51b6406.chunk.css": "/Nutrition_Tracker_2.0_frontend/static/css/2.c51b6406.chunk.css",
     "static/js/2.e15ad03a.chunk.js": "/Nutrition_Tracker_2.0_frontend/static/js/2.e15ad03a.chunk.js",
     "static/js/2.e15ad03a.chunk.js.map": "/Nutrition_Tracker_2.0_frontend/static/js/2.e15ad03a.chunk.js.map",
     "index.html": "/Nutrition_Tracker_2.0_frontend/index.html",
-    "precache-manifest.06ed19e2e1d9a18edc42a546d20ea8e0.js": "/Nutrition_Tracker_2.0_frontend/precache-manifest.06ed19e2e1d9a18edc42a546d20ea8e0.js",
+    "precache-manifest.e5db96f54e2a37bac2f3f00d69d37190.js": "/Nutrition_Tracker_2.0_frontend/precache-manifest.e5db96f54e2a37bac2f3f00d69d37190.js",
     "service-worker.js": "/Nutrition_Tracker_2.0_frontend/service-worker.js",
     "static/css/2.c51b6406.chunk.css.map": "/Nutrition_Tracker_2.0_frontend/static/css/2.c51b6406.chunk.css.map",
     "static/css/main.25db4726.chunk.css.map": "/Nutrition_Tracker_2.0_frontend/static/css/main.25db4726.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.c51b6406.chunk.css",
     "static/js/2.e15ad03a.chunk.js",
     "static/css/main.25db4726.chunk.css",
-    "static/js/main.fd8a4b0d.chunk.js"
+    "static/js/main.7912fce2.chunk.js"
   ]
 }
