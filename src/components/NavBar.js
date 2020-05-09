@@ -20,7 +20,7 @@ function NavBar(props) {
                     <li className="nav"><NavLink to="/profile">Profile</NavLink></li>
                     <li className="nav"><NavLink to="/about">About</NavLink></li> 
                     <li className="nav"><NavLink to="/post">Post</NavLink></li> 
-                    <li className="navLogout"><NavLink to="/about" onClick={props.handleLogout}>Logout</NavLink> </li> 
+                    <li className="navLogout"><NavLink to="/Nutrition_Tracker_2.0_frontend/about" onClick={props.handleLogout}>Logout</NavLink> </li> 
                 </div>
                 
             ) : (
