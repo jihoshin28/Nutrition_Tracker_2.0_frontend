@@ -1,69 +1,103 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-# One hash markdown
+## Nutrition Tracker Application
 
-## Available Scripts
+Nutrition Tracker is a planner which allows users to easily record what they ate and how much they exercised for any day of the calendar. The Nutritionix API allows for users to input their logs in plain English, which is then input into the database as comprehensive data on the food/exercise. 
 
-In the project directory, you can run:
+The application also has useful graphs to help users make useful conclusions 
 
-### `yarn start`
+### Graphs/info included: 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Macronutrients pie chart
+- Bar Graph of recommended and consumed nutrients
+- Daily calories burned during exercise
+- Calorie consumption line graph for the day and week (accounts for calories burned in exercise)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+The Nutritionix API is utilized to allow users to type in senwhere add items to a cart, which can be checked out to create an order. These orders are sent to a server which then makes the same orders for drivers on the driver application. The application includes a realistic checkout experience where users can pay using either Paypal or the Stripe API. There a variety of familiar shopping locations to choose from, each with their own unique items, and a variety of browsing options. 
 
-### `yarn test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+There are 2 ways you can run the application. 
 
-### `yarn build`
+### 1) Run the application locally.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+To run the application locally first clone the source code onto your local machine.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+git clone git@github.com:geeuho/BreadBasket_Shopper.git
+cd BreadBasket_Shopper
+npm install 
+```
 
-### `yarn eject`
+### Start
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Once you've done that, you can run the following command to start the React application.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### 2) Visit the hosted website
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+You can also just visit the hosted live website. 
 
-## Learn More
+[https://www.breadbasketdelivery.com/](https://www.breadbasketdelivery.com/)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Backend
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The backend for the application is currently being hosted on Heroku, so you don't have to run the server locally. 
 
-### Code Splitting
+If you do want to run the server locally, this is the github to the backend code. [link](https://github.com/geeuho/BreadBasket_Backend). 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Using the Site
 
-### Analyzing the Bundle Size
+### Login
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Once you get on the site you'll first want to login to the website. All you need to sign in is a Google account. At the top right corner, there should be a sign in button which utilizes Google Authentication and creates a user profile.
 
-### Making a Progressive Web App
+If this is your first time signing in, you'll be prompted to add some additional information.  
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+### Creating an Order
 
-### Advanced Configuration
+Once you're signed in you can add any item to the cart by simply pressing the plus button. 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+If you switch stores, your cart will drop all its items, since orders can't have items from multiple locations. 
 
-### Deployment
+You can use the search bar to search for specific items, or click on a category to search based on category. 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+### Checking Out
 
-### `yarn build` fails to minify
+Once you want to check out, you can click on the cart button and check your current order. 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Follow all the promptings until you get to the page where you can check your payment and create the order! 
+
+### Current Orders/Order History
+
+There are tabs for you to check current orders and order history.
+
+For the current orders, you have the ability to update live orders, to which the driver will be notified.
+
+## Technologies/Libraries
+
+- React
+- Redux
+- Redux Thunk 
+- Redux Persist
+- Redux Form
+- Bootstrap
+- Google Authentication
+- Google Maps API
+- Stripe API
+- Paypal API 
+- Axios
+
+## Contact
+
+If you have any ideas you would like to contribute or would love to collaborate on the project I would love to connect! 
+
+Email: geeuho@gmail.com
+
+Github: [https://github.com/geeuho/](https://github.com/geeuho/)
+
+LinkedIn: [https://www.linkedin.com/in/allen-shin/](https://www.linkedin.com/in/allen-shin/)
+
