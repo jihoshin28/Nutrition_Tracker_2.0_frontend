@@ -2,7 +2,7 @@
 
 Nutrition Tracker is a planner which allows users to easily record what they ate and how much they exercised for any day of the calendar. The Nutritionix API allows for users to input their logs in plain English, which is then input into the database as comprehensive data on the food/exercise. F.e. users can just enter "I ate 2 bananas". There's also a notes section for users to add any reminders for the day.
 
-The application organizes the data into comprehensive information so that users can make quick conclusions on how they need to manage their diet. 
+The application organizes the data so the users can see how they can better manage their diet and exercise. 
 
 ### Graphs/info included: 
 
