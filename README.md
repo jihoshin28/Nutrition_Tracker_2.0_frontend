@@ -55,7 +55,7 @@ Once you get on the site you'll first want to login to the website. If you don't
 
 If you already have an account, login with your username and password. 
 
-### 1) The day page
+### Day page
 
 This is the main page for the website, which displays the logs for a specific day, with display graphs. 
 
@@ -63,13 +63,13 @@ When you login you'll be taken immediately to today's page.
 
 Each section has a plus sign next to it which will redirect you to the page for posting data.
 
-### 2) Calendar page
+### Calendar page
 
 This page has a calendar which allows you to navigate to pages for days other than today. 
 
 There is also a graph that displays which tracks this week's calorie consumption. 
 
-### 3) The post tab in the header. 
+### Post page
 
 You can quickly post a food, exercise, or note on this page, with a dropdown to select your category 
 
