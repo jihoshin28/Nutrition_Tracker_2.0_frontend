@@ -1,8 +1,8 @@
 ## Nutrition Tracker Application
 
-Nutrition Tracker is a planner which allows users to easily record what they ate and how much they exercised for any day of the calendar. The Nutritionix API allows for users to input their logs in plain English, which is then input into the database as comprehensive data on the food/exercise. 
+Nutrition Tracker is a planner which allows users to easily record what they ate and how much they exercised for any day of the calendar. The Nutritionix API allows for users to input their logs in plain English, which is then input into the database as comprehensive data on the food/exercise. F.e. users can just enter "I ate 2 bananas". There's also a notes section for users to add any reminders for the day.
 
-The application also has useful graphs to help users make useful conclusions 
+The application organizes the data into comprehensive information so that users can make quick conclusions on how they need to manage their diet. 
 
 ### Graphs/info included: 
 
@@ -11,7 +11,7 @@ The application also has useful graphs to help users make useful conclusions
 - Daily calories burned during exercise
 - Calorie consumption line graph for the day and week (accounts for calories burned in exercise)
 
-The Nutritionix API is utilized to allow users to type in senwhere add items to a cart, which can be checked out to create an order. These orders are sent to a server which then makes the same orders for drivers on the driver application. The application includes a realistic checkout experience where users can pay using either Paypal or the Stripe API. There a variety of familiar shopping locations to choose from, each with their own unique items, and a variety of browsing options. 
+### 
 
 ## Getting Started
 
@@ -24,8 +24,8 @@ There are 2 ways you can run the application.
 To run the application locally first clone the source code onto your local machine.
 
 ```
-git clone git@github.com:geeuho/BreadBasket_Shopper.git
-cd BreadBasket_Shopper
+git clone git@github.com:geeuho/Nutrition_Tracker_2.0_frontend.git
+cd Nutrition_Tracker_2.0_frontend
 npm install 
 ```
 
@@ -41,7 +41,7 @@ npm start
 
 You can also just visit the hosted live website. 
 
-[https://www.breadbasketdelivery.com/](https://www.breadbasketdelivery.com/)
+[https://geeuho.github.io/Nutrition_Tracker_2.0_frontend/](https://geeuho.github.io/Nutrition_Tracker_2.0_frontend/)
 
 ## Backend
 
@@ -53,13 +53,16 @@ If you do want to run the server locally, this is the github to the backend code
 
 ### Login
 
-Once you get on the site you'll first want to login to the website. All you need to sign in is a Google account. At the top right corner, there should be a sign in button which utilizes Google Authentication and creates a user profile.
+Once you get on the site you'll first want to login to the website. If you don't have an account, please sign up and create your profile. 
 
-If this is your first time signing in, you'll be prompted to add some additional information.  
+If you already have an account, login with your username and password. 
 
-### Creating an Order
+### Logging Information
 
-Once you're signed in you can add any item to the cart by simply pressing the plus button. 
+You can post information two ways. 
+
+1) The post tab in the header. 
+
 
 If you switch stores, your cart will drop all its items, since orders can't have items from multiple locations. 
 
@@ -80,15 +83,11 @@ For the current orders, you have the ability to update live orders, to which the
 ## Technologies/Libraries
 
 - React
-- Redux
-- Redux Thunk 
-- Redux Persist
-- Redux Form
 - Bootstrap
-- Google Authentication
-- Google Maps API
-- Stripe API
-- Paypal API 
+- Bcrypt Authentication
+- Nutritionix API
+- Google Charts API
+- Google Calendar API
 - Axios
 
 ## Contact
