@@ -2,7 +2,7 @@
 
 Nutrition Tracker is a planner which allows users to easily record what they ate and how much they exercised for any day of the calendar. The Nutritionix API allows for users to input their logs in plain English, which is then input into the database as comprehensive data on the food/exercise. F.e. users can just enter "I ate 2 bananas". There's also a notes section for users to add any reminders for the day.
 
-The application organizes the data so the users can see how they can better manage their diet and exercise. 
+The application organizes the data so the users can see how they can better manage their diet. 
 
 ### Graphs/info included: 
 
@@ -10,8 +10,6 @@ The application organizes the data so the users can see how they can better mana
 - Bar Graph of recommended and consumed nutrients
 - Daily calories burned during exercise
 - Calorie consumption line graph for the day and week (accounts for calories burned in exercise)
-
-### 
 
 ## Getting Started
 
@@ -47,7 +45,7 @@ You can also just visit the hosted live website.
 
 The backend for the application is currently being hosted on Heroku, so you don't have to run the server locally. 
 
-If you do want to run the server locally, this is the github to the backend code. [link](https://github.com/geeuho/BreadBasket_Backend). 
+If you do want to run the server locally, this is the github to the backend code. [https://github.com/geeuho/Nutrition_Tracker_2.0_backend](https://github.com/geeuho/Nutrition_Tracker_2.0_backend). 
 
 ## Using the Site
 
@@ -57,28 +55,25 @@ Once you get on the site you'll first want to login to the website. If you don't
 
 If you already have an account, login with your username and password. 
 
-### Logging Information
+### 1) The day page
 
-You can post information two ways. 
+This is the main page for the website, which displays the logs for a specific day, with display graphs. 
 
-1) The post tab in the header. 
+When you login you'll be taken immediately to today's page. 
 
+Each section has a plus sign next to it which will redirect you to the page for posting data.
 
-If you switch stores, your cart will drop all its items, since orders can't have items from multiple locations. 
+### 2) Calendar page
 
-You can use the search bar to search for specific items, or click on a category to search based on category. 
+This page has a calendar which allows you to navigate to pages for days other than today. 
 
-### Checking Out
+There is also a graph that displays which tracks this week's calorie consumption. 
 
-Once you want to check out, you can click on the cart button and check your current order. 
+### 3) The post tab in the header. 
 
-Follow all the promptings until you get to the page where you can check your payment and create the order! 
+You can quickly post a food, exercise, or note on this page, with a dropdown to select your category 
 
-### Current Orders/Order History
-
-There are tabs for you to check current orders and order history.
-
-For the current orders, you have the ability to update live orders, to which the driver will be notified.
+There is a calendar so you can select the date that you want to post for.  
 
 ## Technologies/Libraries
 
