@@ -31,7 +31,7 @@ export class Login extends Component {
           } else {
               console.log(json)
             this.props.handleLogin(json);
-            this.props.history.push('/Nutrition_Tracker_2.0_frontend/todaypage');
+            this.props.history.push('/todaypage');
           };
         });
       };

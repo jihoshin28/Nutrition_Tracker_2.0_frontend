@@ -206,7 +206,7 @@ export class DayPage extends Component {
                 <div className="food-header">
                     <h3>Breakfast</h3>
                     <div className="food-add">
-                        <Link className="primary-bttn" to={{pathname: '/postFood',
+                        <Link className="primary-bttn" to={{pathname: '/postfood',
                             state: {
                                 date: currentDate,
                                 meal: 'breakfast'
@@ -223,7 +223,7 @@ export class DayPage extends Component {
                 <div className= "food-header">
                     <h3>Lunch</h3>
                     <div className="food-add">
-                        <Link className ="primary-bttn" to={{pathname: '/postFood',
+                        <Link className ="primary-bttn" to={{pathname: '/postfood',
                             state: {
                                 date: currentDate,
                                 meal: 'lunch'
@@ -240,7 +240,7 @@ export class DayPage extends Component {
                 <div className= "food-header">
                     <h3>Dinner</h3>
                     <div className="food-add">
-                        <Link className = "primary-bttn" to={{pathname: '/postFood',
+                        <Link className = "primary-bttn" to={{pathname: '/postfood',
                             state: {
                                 date: currentDate,
                                 meal: 'dinner'
@@ -261,7 +261,7 @@ export class DayPage extends Component {
                             {todayExercises}
                         </div>
                         <br></br>
-                        <Link className="primary-bttn" to={{pathname: '/postExercise',
+                        <Link className="primary-bttn" to={{pathname: '/postexercise',
                             state: {
                                 date: currentDate
                             }
@@ -277,7 +277,7 @@ export class DayPage extends Component {
                     {todayNotes}
                 </div>
                 <br></br>
-                <Link className = "primary-bttn" to={{pathname: '/postNote',
+                <Link className = "primary-bttn" to={{pathname: '/postnote',
                     state: {
                         date: currentDate
                     }

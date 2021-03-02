@@ -205,7 +205,7 @@ export class DayPage extends Component {
                     <div className="food-header">
                         <h3>Breakfast</h3>
                         <div className="food-add">
-                            <Link className="primary-bttn" to={{pathname: '/postFood',
+                            <Link className="primary-bttn" to={{pathname: '/postfood',
                                 state: {
                                     date: this.props.match.params,
                                     meal: 'breakfast'
@@ -222,7 +222,7 @@ export class DayPage extends Component {
                     <div className= "food-header">
                         <h3>Lunch</h3>
                         <div className="food-add">
-                            <Link className ="primary-bttn" to={{pathname: '/postFood',
+                            <Link className ="primary-bttn" to={{pathname: '/postfood',
                                 state: {
                                     date: this.props.match.params,
                                     meal: 'lunch'
@@ -239,7 +239,7 @@ export class DayPage extends Component {
                     <div className= "food-header">
                         <h3>Dinner</h3>
                         <div className="food-add">
-                            <Link className = "primary-bttn" to={{pathname: '/postFood',
+                            <Link className = "primary-bttn" to={{pathname: '/postfood',
                                 state: {
                                     date: this.props.match.params,
                                     meal: 'dinner'
@@ -260,7 +260,7 @@ export class DayPage extends Component {
                                 {dayExercises}
                             </div>
                             <br></br>
-                            <Link className="primary-bttn" to={{pathname: '/postExercise',
+                            <Link className="primary-bttn" to={{pathname: '/postexercise',
                                 state: {
                                     date: this.props.match.params
                                 }
@@ -276,7 +276,7 @@ export class DayPage extends Component {
                         {dayNotes}
                     </div>
                     <br></br>
-                    <Link className = "primary-bttn" to={{pathname: '/postNote',
+                    <Link className = "primary-bttn" to={{pathname: '/postnote',
                         state: {
                             date: this.props.match.params
                         }
