@@ -15,7 +15,7 @@ function NavBar(props) {
                 <div>
                     <li className= "nav">Nutrition Tracker</li>
                 
-                    <li className="nav"><NavLink to='/todaypage'>Today</NavLink></li>
+                    <li className="nav"><NavLink to={`/daypage/${this.props.currentDate}`}>Today</NavLink></li>
                     <li className="nav"><NavLink to="/calendar">Calendar</NavLink></li>
                     <li className="nav"><NavLink to="/profile">Profile</NavLink></li>
                     <li className="nav"><NavLink to="/about">About</NavLink></li> 

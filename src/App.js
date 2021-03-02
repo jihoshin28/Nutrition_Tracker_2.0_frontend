@@ -29,11 +29,17 @@ class App extends Component {
 constructor(){
   super()
   this.state = {
-    currentUser: {}
+    currentUser: {},
+    current_date: null
   }
 }
 
 componentDidMount() {
+  let today = new Date()
+  let currentDate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()
+  this.setState({
+    current_date: currentDate
+  })
   const token = localStorage.getItem('token');
   if(token) {
     api.getCurrentUser().then(json => {
@@ -62,11 +68,11 @@ handleLogout = () => {
       <header className="App-header">  
           <Router basename = "/">
             <div className='app'>
-            <NavBar handleLogout={this.handleLogout} currentUser = {this.state.currentUser}/>
+            <NavBar handleLogout={this.handleLogout} currentUser = {this.state.currentUser} currentDate = {this.state.currentDate}/>
             <Route exact path ="/" render={(props) => <About {...props} currentuser ={this.state.currentUser}/>} />
             <Route exact path ="/about" render={(props) => <About {...props} currentuser ={this.state.currentUser}/>} />
-            <Route exact path="/login" render={(props) => <Login {...props} handleLogin={this.handleLogin}/>} />
-            <Route exact path="/signup" render={(props) => <SignUp {...props} handleLogin={this.handleLogin}/>} />
+            <Route exact path="/login" render={(props) => <Login {...props} handleLogin={this.handleLogin}/>} currentDate = {this.state.currentDate}/>
+            <Route exact path="/signup" render={(props) => <SignUp {...props} handleLogin={this.handleLogin} currentDate = {this.state.currentDate}/>} />
             <Route exact path="/profile" render ={(props) => <ProfilePage {...props} handleLogout={this.handleLogout} currentUser={this.state.currentUser}/>} />
             <Route exact path="/daypage/:date" render = {(props) => <DayPage {...props} currentUser = {this.state.currentUser}/>}/>
             <Route exact path="/todaypage" render = {(props) => <TodayPage {...props} currentUser = {this.state.currentUser}/>}/>

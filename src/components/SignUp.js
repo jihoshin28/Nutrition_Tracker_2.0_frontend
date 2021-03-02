@@ -25,7 +25,7 @@ export class SignUp extends Component {
             this.setState({ error: true })
           } else {
             this.props.handleLogin(json);
-            this.props.history.push('/todaypage');
+            this.props.history.push(`/daypage/${this.props.currentDate}`);
           };
         });
       };

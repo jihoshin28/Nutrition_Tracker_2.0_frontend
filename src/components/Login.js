@@ -31,7 +31,7 @@ export class Login extends Component {
           } else {
               console.log(json)
             this.props.handleLogin(json);
-            this.props.history.push('/todaypage');
+            this.props.history.push(`/daypage/${this.props.currentDate}`);
           };
         });
       };
