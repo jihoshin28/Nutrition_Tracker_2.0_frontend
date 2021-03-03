@@ -19,58 +19,52 @@ export default class CalendarPage extends Component {
   
 
   componentDidMount(){
-    const token = localStorage.getItem('token');
-            if (token) {
-                api.getCurrentUser().then(json => {
-                let user = json.user.data.attributes ;
-                let weekFoodData = []
-                let weekExerciseData = []
-                let getWeek = () => {
-                  for(let i = 0; i < 7; i++){
-                      let curr = new Date();
-                      let first = curr.getDate() - curr.getDay() + i 
-                      let date = new Date(curr.setDate(first)).toISOString().slice(0, 10)
-                    
-                      api.getUserFoods(user.id, date)
-                      .then(json => {
-                        
-                        json.data.forEach(data => {
-                          let newData= {}
-                          newData["date"] = date
-                          newData["calories"] = data.attributes.calories
-                          weekFoodData.push(newData)
-                         
-                        })
-                        this.setState({
-                          weekFoodData: weekFoodData
-                        })
-                        // console.log(this.state.weekFoodData)
-                      })
+    let user = json.user.data.attributes ;
+    let weekFoodData = []
+    let weekExerciseData = []
+    let getWeek = () => {
+      for(let i = 0; i < 7; i++){
+        let curr = new Date();
+        let first = curr.getDate() - curr.getDay() + i 
+        let date = new Date(curr.setDate(first)).toISOString().slice(0, 10)
+      
+        api.getUserFoods(this.props.currentUser.id, date)
+        .then(json => {
+          
+          json.data.forEach(data => {
+            let newData= {}
+            newData["date"] = date
+            newData["calories"] = data.attributes.calories
+            weekFoodData.push(newData)
+            
+          })
+          this.setState({
+            weekFoodData: weekFoodData
+          })
+          // console.log(this.state.weekFoodData)
+        })
 
-                      api.getUserExercises(user.id, date)
-                      .then(json => {
-                        json.data.forEach(data => {
-                          let newData= {}
-                          newData["date"] = date
-                          newData["calories"] = data.attributes.calories
-                          weekExerciseData.push(newData)
-                          
-                        })
-                        this.setState({
-                          weekExerciseData: weekExerciseData
-                        })
-                        console.log(this.state.weekExerciseData)
-                      })
-                      
-                  }
-                  
-                  
-                }
-                getWeek()
-              })
+        api.getUserExercises(this.props.currentUser, date)
+        .then(json => {
+          json.data.forEach(data => {
+            let newData= {}
+            newData["date"] = date
+            newData["calories"] = data.attributes.calories
+            weekExerciseData.push(newData)
+            
+          })
+          this.setState({
+            weekExerciseData: weekExerciseData
+          })
+          console.log(this.state.weekExerciseData)
+        })   
+      }
+    }
+    getWeek()
+
     }
     
-  }
+
  
   onChange = (date) => {
     this.dateLink(date)
