@@ -84,8 +84,6 @@ export default class CalendarPage extends Component {
   else if(!!this.state.weekExerciseData && !!this.state.weekFoodData && !this.state.weekExerciseData[0] && !this.state.weekFoodData[0]){
     graph = "No Data Posted!"
   } else {
-    let today = new Date();
-    // let day = today.getDay();
     let foodData = []
     foodData.push(['Nutrient', 'Overall Calorie Intake'])
     for(let i = 0; i < 7; i++){
@@ -128,7 +126,7 @@ export default class CalendarPage extends Component {
                     loader={<div>Loading Chart</div>}
                     data={foodData}
                     options={{
-                      title: 'This Week\'s Calorie Intake Breakdown',
+                      title: 'This Week\'s Calorie Intake',
                       hAxis: { title: 'Time of Day', titleTextStyle: { color: '#333' } },
                       vAxis: { title: 'Calories', minValue: 0 },
                       // For the legend to fit, we make the chart area smaller

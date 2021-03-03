@@ -109,9 +109,6 @@ export class FoodCard extends Component {
                         </div>
                         <br></br>
                     </div>
-                    <div>
-                        {note}
-                    </div>
                 </div>
                 <br></br>
             </div>

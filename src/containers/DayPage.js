@@ -122,7 +122,9 @@ export class DayPage extends Component {
         let dayNotes
         let foodgraphs
         let caloriesBurned
-        let date = this.props.match.params.date
+        let dateSplit = this.props.match.params.date.split('-')
+        let date = `0${dateSplit[1]}/0${dateSplit[2]}/${dateSplit[0]}`
+        
         
             if (!!this.state.dayExercises && !this.state.dayExercises[0]){
                 dayExercises = "No Exercises Posted"
@@ -177,12 +179,16 @@ export class DayPage extends Component {
             console.log(this.state.currentUser)
         return (
         <div>
-            
-            <div>
-                <h1>{date}</h1>  
+            <div className = "container">
+
+                <div style = {{width: '100%', display: 'flex', justifyContent:'center'}}>
+                    <div class = "date-header">
+                        <h1>{date}</h1>  
+                    </div>
+                </div>
                 <div className="top-section">
                     <div className ="graph-section">
-                        <h2>Graphs</h2>
+                        <h2 style = {{marginBottom: '5%'}}>Graphs</h2>
                         {foodgraphs}
                     </div>
                     <div className ="exercise-data-div">

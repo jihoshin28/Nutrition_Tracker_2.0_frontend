@@ -65,8 +65,8 @@ export class Graphs extends Component {
                 <div className ="top-graphs-div"> 
                   <div className= "pie-chart-div">
                   <Chart
-                        width={'400px'}
-                        height={'400px'}
+                        width={'360px'}
+                        height={'360px'}
                         chartType="PieChart"
                         loader={<div>Loading Chart</div>}
                         data={[
@@ -84,8 +84,8 @@ export class Graphs extends Component {
                   <div className = "bar-graph-div">
              
                   <Chart
-                    width={'400px'}
-                    height={'400px'}
+                    width={'360px'}
+                    height={'360px'}
                     chartType="BarChart"
                     loader={<div>Loading Chart</div>}
                     data={[
@@ -114,8 +114,8 @@ export class Graphs extends Component {
                 <div className = "bar-graph-div">
              
                   <Chart
-                    width={'400px'}
-                    height={'400px'}
+                    width={'360px'}
+                    height={'360px'}
                     chartType="BarChart"
                     loader={<div>Loading Chart</div>}
                     data={[
@@ -146,9 +146,9 @@ export class Graphs extends Component {
                 <br></br>
                 </div>
                   <br></br>
-                <div className ="bar-graph-div">
-                <Chart
-                    width={'1280px'}
+                <div className ="bottom-graphs-div">
+                  <Chart
+                    width={'1080px'}
                     height={'600px'}
                     chartType="AreaChart"
                     loader={<div>Loading Chart</div>}
