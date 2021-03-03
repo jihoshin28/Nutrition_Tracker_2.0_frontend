@@ -194,7 +194,8 @@
 }
 
 .note-card{
-  display: block;
+  display: flex;
+  justify-content: space-around;
   align-items: center;
   background: #fff;
   border-top: 10px solid #39BE00;
@@ -210,12 +211,13 @@
 
 .exercise-card{
   display: flex;
-  justify-content: space-between;
-  width: 1000px;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
+  width: 800px;
   background: #fff;
   border-top: 10px solid #39BE00;
-  padding: 10px;
+  padding: 3%;
 }
 
 .exercise-text{

@@ -35,21 +35,20 @@ export class NoteCard extends Component {
         return (
             deleted === false ? (
             <div>
-                <div className= "exercise-card">
-                    <div><h1>Note Here!</h1></div>
-                <div className="exercise-text">
-                    <p>Subject: {this.props.note.subject}</p>
-                    <p>Text: {this.props.note.text}</p>
-                </div>
                 
-                <div>
-                    <button className="secondary-bttn" onClick = {this.editNote}>Edit</button>
-                    <button className="secondary-bttn" onClick ={this.deleteNote}>Delete</button>
+                <div className = "card exercise-card">
+
+                    <div className="exercise-text">
+                        <p>Subject: {this.props.note.subject}</p>
+                        <p>Text: {this.props.note.text}</p>
+                    </div>
+                
+                    <div style = {{display: 'flex'}}>
+                        <button style = {{marginRight: '5%'}} className="btn btn-warning" onClick = {this.editNote}>Edit</button>
+                        <button className="btn btn-danger" onClick ={this.deleteNote}>Delete</button>
+                    </div>
                 </div>
-                    <br></br>
-                    
-                </div>
-                <br></br>
+            <br></br>
             </div>
             
             ) : (   

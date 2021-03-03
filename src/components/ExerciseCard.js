@@ -68,32 +68,26 @@ export class ExerciseCard extends Component {
 
     render() { 
         let deleted = this.state.deleted
-        let note
-        if(this.state.note === ""){
-            note = <NoteForm id ={this.props.exercise.id} handleChange ={this.handleChange} handleSubmit = {(event) => this.handleSubmit(event)}/>
-        } else {
-            note = <div className ="exercise-note">
-                    <p>Note:</p>
-                    <p>{this.state.note}</p>
-                    <button onClick={this.noteButton}>Edit Note</button>
-                </div>     
-        }
+        // let note
+        // if(this.state.note === ""){
+        //     note = <NoteForm id ={this.props.exercise.id} handleChange ={this.handleChange} handleSubmit = {(event) => this.handleSubmit(event)}/>
+        // } else {
+        //     note = <div className ="exercise-note">
+        //             <p>Note:</p>
+        //             <p>{this.state.note}</p>
+        //             <button onClick={this.noteButton}>Edit Note</button>
+        //         </div>     
+        // }
         return (
             deleted === false ? (
             <div>
-                <div className= "exercise-card">
-                    <div>
-                        <h1>Map Here!</h1>
-                    </div>
+                <div className= "card exercise-card">
                     <div className="exercise-text">
                         <p>Exercise: {this.props.exercise.name}</p>
                         <p>Calories Burned: {this.props.exercise.calories} calories burned</p>
                     </div>
-                    <div>
-                        {note}
-                    </div>
-                    <div> 
-                        <button className="btn btn-warning" onClick = {this.editExercise}>Edit</button>
+                    <div style = {{display: 'flex'}}> 
+                        <button style = {{marginRight: '5%'}} className="btn btn-warning" onClick = {this.editExercise}>Edit</button>
                         <button className="btn btn-danger" onClick = {this.deleteExercise}>Delete</button>
                     </div>
                 </div>
