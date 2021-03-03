@@ -92,9 +92,9 @@ export class ExerciseCard extends Component {
                     <div>
                         {note}
                     </div>
-                    <div>
-                        <button className="secondary-bttn" onClick = {this.editExercise}>Edit</button>
-                        <button className="secondary-bttn" onClick = {this.deleteExercise}>Delete</button>
+                    <div> 
+                        <button className="btn btn-warning" onClick = {this.editExercise}>Edit</button>
+                        <button className="btn btn-danger" onClick = {this.deleteExercise}>Delete</button>
                     </div>
                 </div>
             <br></br>

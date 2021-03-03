@@ -149,7 +149,7 @@ export default class CalendarPage extends Component {
       <div className="calendar-page">
         <div className="calendar-div">
           <h1>Calendar Page</h1>
-          <div>
+          <div style = {{width: '100%'}}>
             <Calendar className="calendar"
               onChange={this.onChange}
               value={this.state.date}
@@ -160,7 +160,7 @@ export default class CalendarPage extends Component {
           </div>
         </div>
         <div className = "exercise-plan-container">
-          <h3>This week's calorie intake (w/ burned calories)</h3>
+          <h3>This week's calorie intake (including burned calories)</h3>
           <div className = "exercise-plan-display">
             {graph}
             

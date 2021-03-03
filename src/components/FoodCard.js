@@ -101,9 +101,6 @@ export class FoodCard extends Component {
                         <p>Fat: {this.props.food.fat} g</p>
                         <p>Protein: {this.props.food.protein} g</p>
                         <p>Carbohydrates: {this.props.food.carbs} g</p>
-                        <div>
-                            {note}
-                        </div>
                         <br></br>
                         <div>
                             <button style= {{marginRight: '5%'}} className="btn btn-warning" onClick = {this.editFood}>Edit</button>
@@ -111,6 +108,9 @@ export class FoodCard extends Component {
 
                         </div>
                         <br></br>
+                    </div>
+                    <div>
+                        {note}
                     </div>
                 </div>
                 <br></br>

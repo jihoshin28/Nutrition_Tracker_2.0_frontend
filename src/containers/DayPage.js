@@ -94,7 +94,7 @@ export class DayPage extends Component {
             console.log(foodData)
         })
 
-        api.getUserExercises(this.props.currentUser.id, dateParams)
+        api.getUserExercises(currentUserId, dateParams)
         .then(json => {
             console.log(json.data)
             let exerciseData = json.data.map(food => food.attributes.calories)
@@ -105,7 +105,7 @@ export class DayPage extends Component {
             
         })
 
-        api.getUserNotes(this.props.currentUser.id, dateParams)
+        api.getUserNotes(currentUserId, dateParams)
         .then(json => {
             console.log(json.data)
             this.setState({

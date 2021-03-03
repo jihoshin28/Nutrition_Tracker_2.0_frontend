@@ -9,8 +9,7 @@ export class Home extends Component {
                 <h1>About Us</h1>
                 <div className = "exercise-plan-container">
                     <div className = "exercise-plan-display">
-                    <h3>Welcome to Nutrition Tracker 2.0</h3>
-                    <p>Hello User!</p>
+                    <h2 style = {{marginBottom: '4%'}}>Welcome to Nutrition Tracker 2.0</h2>
                     <p> 
                         Nutrition Tracker 2.0 is a nutrition tracking app, which specializes in displaying 
                         vital nutritional information. It's difficult to see the full picture when tracking 
