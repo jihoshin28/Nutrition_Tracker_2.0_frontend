@@ -1,46 +1,62 @@
-import React, { Component } from 'react'
+import React, { Component, useState, useEffect } from 'react'
 import api from '../services/Api'
 import { Link } from 'react-router-dom'
 
-var SpeechRecognition = SpeechRecognition || window.webkitSpeechRecognition
-var SpeechGrammarList = SpeechGrammarList || window.webkitSpeechGrammarList
-var SpeechRecognitionEvent = SpeechRecognitionEvent || window.webkitSpeechRecognitionEvent
+var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+var SpeechGrammarList = window.SpeechGrammarList || window.webkitSpeechGrammarList
+var SpeechRecognitionEvent = window.SpeechRecognitionEvent || window.webkitSpeechRecognitionEvent
 
-export class PostPage extends Component {
-    constructor() {
-        super();
-        this.state= {
-            error: false,
-            fields: null,
-            date: null,
-            meal: null,
-            postState: false,
-            menu: ''
-        }
+const grammar = '#JSGF V1.0; grammar numbers; public <number> = one | two | three | four | five | six | seven | eight| nine | ten ;'
+var recognition = new SpeechRecognition()
+var speechRecognitionList = new SpeechGrammarList()
+speechRecognitionList.addFromString(grammar, 1)
+recognition.grammars = speechRecognitionList
+recognition.continuous = false;
+recognition.lang = 'en-US';
+recognition.interimResults = false;
+recognition.maxAlternatives = 1;
+
+console.log(speechRecognitionList)
+
+const PostPage = (props, recognition) => {
+
+    let[error, setError] = useState(false)
+    let[fields, setFields] = useState(null)
+    let[date, setDate] = useState(null)
+    let[meal, setMeal] = useState(null)
+    let[posted, setPosted] = useState(false)
+    let[menu, setMenu] = useState('')
+    let[transcript, setTranscript] = useState('')
+
+
+    let starttalkToText = () => {
+        recognition.start()
     }
+
+    // recognition.onresult = (event) => {
+    //     var result = event.results[0][0].transcript
+    //     setTranscript(result)
+    // }
     
-    componentDidMount(){
-        console.log(this.state)
+    // recognition.onspeechend = () => {
+    //     recognition.stop()
+    // }
+
+    let handleMenu = (e) => {
+        setMenu(e.target.value)
     }
 
-    talkToText(){
-
+    let handleMeal = (e) => {
+        setMeal(e.target.value)
     }
 
-    handleMenu = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-        console.log(this.state)
+    let handleChange = (e) => {
+        const newFields = { ...fields, [e.target.name]: e.target.value };
+        setFields( newFields );
+        console.log(fields)
     }
 
-    handleChange = (e) => {
-        const newFields = { ...this.state.fields, [e.target.name]: e.target.value };
-        this.setState({ fields: newFields });
-        console.log(this.state)
-    }
-
-    postNote = (event, subject, text, user, date) => {
+    let postNote = (event, subject, text, user, date) => {
         event.preventDefault()
         if(!date || !subject || !text){
             alert("Please Fill In Required Fields!")
@@ -49,15 +65,13 @@ export class PostPage extends Component {
             api.postUserNote(subject, text, user, date)
             .then(json => {
                 console.log(json)
-                this.setState({
-                    postState: true,
-                    date: `${splitDate[0]}-${splitDate[1].split('')[1]}-${splitDate[2].split('')[1]}`
-                })
+                setPosted(true)
+                setDate(`${splitDate[0]}-${splitDate[1].split('')[1]}-${splitDate[2].split('')[1]}`)
             })
         }
     }
 
-    postFood = (event, query, user, date, meal) => {
+    let postFood = (event, query, user, date, meal) => {
         event.preventDefault()
         if(!date || !query || !meal || (!date && !query && !meal)){
            
@@ -75,10 +89,8 @@ export class PostPage extends Component {
                     api.postUserFood(food, user, meal, date, time)
                     .then(json => {
                         console.log(json)
-                        this.setState({
-                            postState: true,
-                            date: `${splitDate[0]}-${splitDate[1].split('')[1]}-${splitDate[2].split('')[1]}`
-                        })
+                        setPosted(true)
+                        setDate(`${splitDate[0]}-${splitDate[1].split('')[1]}-${splitDate[2].split('')[1]}`)
                     })
                 })
                 console.log(json)
@@ -86,7 +98,7 @@ export class PostPage extends Component {
         } 
     }
 
-    postExercise = (event, query, user, date) => {
+    let postExercise = (event, query, user, date) => {
         event.preventDefault()
         if(!query || !date){
             alert("Please Fill In Required Fields!")
@@ -100,10 +112,8 @@ export class PostPage extends Component {
                     api.postUserExercise(exercise, user, date, time)
                     .then(json => {
                         console.log(json)
-                        this.setState({
-                            postState: true,
-                            date: `${splitDate[0]}-${splitDate[1].split('')[1]}-${splitDate[2].split('')[1]}`
-                        })
+                        setPosted(true)
+                        setDate(`${splitDate[0]}-${splitDate[1].split('')[1]}-${splitDate[2].split('')[1]}`)
                     })
                 })
                 console.log(json)
@@ -111,22 +121,23 @@ export class PostPage extends Component {
         }
     }
 
-    render() {
-        let menu
+    
+        let currentMenu
         let link
-        if (this.state.menu === "food"){
-        menu = 
-            <form className="userForm" onSubmit={(event) => this.postFood(event, this.state.fields.foodInput, this.props.currentUser, this.state.fields.date, this.state.meal)}>
+        if (menu === "food"){
+        currentMenu = 
+        <div>
+            <form className="userForm" onSubmit={(event) => postFood(event, fields.foodInput, props.currentUser, fields.date, meal)}>
                 <h3>Submit a food post with speech recognition</h3>
                 <label> Date:
-                    <input onChange={this.handleChange} type="date" name="date" /> 
+                    <input onChange={handleChange} type="date" name="date" /> 
                 </label> <br/>
                 <label> Post Food:
-                    <input type="text" name="foodInput" onChange={this.handleChange}/>
+                    <input type="text" name="foodInput" onChange={handleChange}/>
                 </label>
                 <br></br>
                 <label> Select Meal:
-                <select onChange ={this.handleMenu} name="meal" id="meal-select">
+                <select onChange ={handleMeal} name="meal" id="meal-select">
                     <option value="">Select Category</option>
                     <option value="breakfast">Breakfast</option>
                     <option value="lunch">Lunch</option>
@@ -136,51 +147,66 @@ export class PostPage extends Component {
                 <br></br>
                 <input type="submit" value="Submit" />
             </form>
-        } else if (this.state.menu === "exercise") {
-        menu = 
-            <form className="userForm" onSubmit={(event) => this.postExercise(event, this.state.fields.exerciseInput, this.props.currentUser, this.state.fields.date)}>
+            <div style = {{marginTop: '2%'}}>
+                <button onClick = {() => starttalkToText()} className = 'btn btn-primary'>Click to start speech to text</button>
+            </div>
+        </div>
+        } else if (menu === "exercise") {
+        currentMenu = 
+        <div>
+            <form className="userForm" onSubmit={(event) => postExercise(event, fields.exerciseInput, props.currentUser, fields.date)}>
                 <h3>Submit an exercise post with speech recognition</h3>
                 <label> Date:
-                    <input onChange={this.handleChange} type="date" name="date" /> 
+                    <input onChange={handleChange} type="date" name="date" /> 
                 </label> <br/>
                 <label> Post Exercise:
-                    <input type="text" name="exerciseInput" onChange={this.handleChange}/>
+                    <input type="text" name="exerciseInput" onChange={handleChange}/>
                 </label>
                 <br></br>
                 <input type="submit" value="Submit" />
             </form>
+            <div style = {{marginTop: '2%'}}>
+                <button onClick = {() => starttalkToText()} className = 'btn btn-primary'>Click to start speech to text</button>
+            </div>
+        </div>
         }
-        else if (this.state.menu === "note") {
-            menu = 
-                <form className="userForm" onSubmit={(event) => this.postNote(event, this.state.fields.subject, this.state.fields.text, this.props.currentUser, this.state.fields.date)}>
+        else if (menu === "note") {
+            currentMenu = 
+            <div>
+                <form className="userForm" onSubmit={(event) => postNote(event, fields.subject, fields.text, props.currentUser, fields.date)}>
                     <h3>Submit an note with speech recognition</h3>
                     <label> Date:
-                        <input onChange={this.handleChange} type="date" name="date" /> 
+                        <input onChange={handleChange} type="date" name="date" /> 
                     </label> <br/>
                     <label> Heading:
-                        <input type="text" name="subject" onChange={this.handleChange}/>
+                        <input type="text" name="subject" onChange={handleChange}/>
                     </label>
                     <br></br>
                     <label> Text:
-                        <input type="text" name="text" onChange={this.handleChange}/>
+                        <input type="text" name="text" onChange={handleChange}/>
                     </label>
                     <br></br>
                     <input type="submit" value="Submit" />
                 </form>
+                <div style = {{marginTop: '2%'}}>
+                    <button onClick = {() => starttalkToText()} className = 'btn btn-primary'>Click to start speech to text</button>
+                </div>
+
+            </div>
         }
 
-        if(!this.state.postState){
+        if(!posted){
             link = null
         } else {
-            link =  <Link to={`/daypage/${this.state.date}`}>Go to {this.state.date}</Link> 
+            link =  <Link to={`/daypage/${date}`}>Go to {date}</Link> 
         }
 
 
         return (
             <div>
                 <h1>Post Log</h1>
-                {this.state.postState ? <h2>Posted!</h2> : null}
-                <select onChange ={this.handleMenu} name="menu">
+                {posted ? <h2>Posted!</h2> : null}
+                <select onChange ={handleMenu} name="menu">
                     <option value="">Select Category</option>
                     <option value="food">Food</option>
                     <option value="exercise">Exercise</option>
@@ -189,12 +215,14 @@ export class PostPage extends Component {
                 <br></br>
                 <br></br>
                 
-                {menu}
+                {currentMenu}
+                <br></br>
+                {transcript}
                 <br></br>
                 {link}
             </div>
         )
-    }
+    
 }
 
 export default PostPage
