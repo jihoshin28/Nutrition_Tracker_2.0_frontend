@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import api from '../services/Api'
 import { Link } from 'react-router-dom'
 
+var SpeechRecognition = SpeechRecognition || window.webkitSpeechRecognition
+var SpeechGrammarList = SpeechGrammarList || window.webkitSpeechGrammarList
+var SpeechRecognitionEvent = SpeechRecognitionEvent || window.webkitSpeechRecognitionEvent
+
 export class PostPage extends Component {
     constructor() {
         super();
@@ -17,6 +21,10 @@ export class PostPage extends Component {
     
     componentDidMount(){
         console.log(this.state)
+    }
+
+    talkToText(){
+
     }
 
     handleMenu = (e) => {
@@ -37,12 +45,13 @@ export class PostPage extends Component {
         if(!date || !subject || !text){
             alert("Please Fill In Required Fields!")
         } else {
+            let splitDate = date.split('-')
             api.postUserNote(subject, text, user, date)
             .then(json => {
                 console.log(json)
                 this.setState({
                     postState: true,
-                    date: date
+                    date: `${splitDate[0]}-${splitDate[1].split('')[1]}-${splitDate[2].split('')[1]}`
                 })
             })
         }
@@ -55,7 +64,7 @@ export class PostPage extends Component {
             console.log(date, query, meal)
             alert("Please Fill In Required Fields!")
         } else {
-           
+            let splitDate = date.split('-')
             console.log(date, user, query, meal)
         api.nutritionixGetFood(query)
             .then(json => {
@@ -68,7 +77,7 @@ export class PostPage extends Component {
                         console.log(json)
                         this.setState({
                             postState: true,
-                            date: date
+                            date: `${splitDate[0]}-${splitDate[1].split('')[1]}-${splitDate[2].split('')[1]}`
                         })
                     })
                 })
@@ -85,6 +94,7 @@ export class PostPage extends Component {
         api.nutritionixGetExercise(query, user)
             .then(json => {
                 json.exercises.forEach(exercise => {
+                    let splitDate = date.split('-')
                     let today = new Date();
                     var time = today.getHours() + ":" + (today.getMinutes() < 10 ? '0':'') + today.getMinutes() + ":" + (today.getSeconds()< 10 ? '0':'') + today.getSeconds()
                     api.postUserExercise(exercise, user, date, time)
@@ -92,7 +102,7 @@ export class PostPage extends Component {
                         console.log(json)
                         this.setState({
                             postState: true,
-                            date: date
+                            date: `${splitDate[0]}-${splitDate[1].split('')[1]}-${splitDate[2].split('')[1]}`
                         })
                     })
                 })
@@ -107,7 +117,7 @@ export class PostPage extends Component {
         if (this.state.menu === "food"){
         menu = 
             <form className="userForm" onSubmit={(event) => this.postFood(event, this.state.fields.foodInput, this.props.currentUser, this.state.fields.date, this.state.meal)}>
-                <p>Submit a food post in plain English!</p>
+                <h3>Submit a food post with speech recognition</h3>
                 <label> Date:
                     <input onChange={this.handleChange} type="date" name="date" /> 
                 </label> <br/>
@@ -129,7 +139,7 @@ export class PostPage extends Component {
         } else if (this.state.menu === "exercise") {
         menu = 
             <form className="userForm" onSubmit={(event) => this.postExercise(event, this.state.fields.exerciseInput, this.props.currentUser, this.state.fields.date)}>
-                <p>Submit an exercise post in plain English!</p>
+                <h3>Submit an exercise post with speech recognition</h3>
                 <label> Date:
                     <input onChange={this.handleChange} type="date" name="date" /> 
                 </label> <br/>
@@ -143,6 +153,7 @@ export class PostPage extends Component {
         else if (this.state.menu === "note") {
             menu = 
                 <form className="userForm" onSubmit={(event) => this.postNote(event, this.state.fields.subject, this.state.fields.text, this.props.currentUser, this.state.fields.date)}>
+                    <h3>Submit an note with speech recognition</h3>
                     <label> Date:
                         <input onChange={this.handleChange} type="date" name="date" /> 
                     </label> <br/>
