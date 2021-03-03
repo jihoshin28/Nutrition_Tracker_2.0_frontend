@@ -17,13 +17,16 @@ export class Note extends Component {
 
     render() {
         return (
-            <form onSubmit={(event) => this.handleSubmit(event)}>
-                <label> Note: 
-                <input type="text" name="note" onChange= {this.handleChange}/>
-                </label> 
-                <input type="Submit" value="Submit"/> 
-                
-            </form>
+            <div class = "food-note">
+                <form onSubmit={(event) => this.handleSubmit(event)}>
+                    <label> Note: 
+                    <input type="text" name="note" onChange= {this.handleChange}/>
+                    </label> 
+                    <input type="Submit" value="Submit"/> 
+                    
+                </form>
+            
+            </div>
         )
     }
 }

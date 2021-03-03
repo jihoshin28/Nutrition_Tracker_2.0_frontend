@@ -148,7 +148,7 @@ export class Graphs extends Component {
                   <br></br>
                 <div className ="bar-graph-div">
                 <Chart
-                    width={'1285px'}
+                    width={'1280px'}
                     height={'600px'}
                     chartType="AreaChart"
                     loader={<div>Loading Chart</div>}

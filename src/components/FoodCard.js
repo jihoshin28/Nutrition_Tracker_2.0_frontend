@@ -79,20 +79,23 @@ export class FoodCard extends Component {
             if(this.state.note === ""){
                 note = <NoteForm id ={this.props.food.id} handleChange ={this.handleChange} handleSubmit = {(event) => this.handleSubmit(event)}/>
             } else {
-                note = <div className ="food-note">
-                    <p>Note:</p>
-                    <p>{this.state.note}</p>
-                    <button onClick={this.noteButton}>Edit Note</button>
+                note = 
+                <div className ="food-note">
+                    <div class = "food-note-text">
+                        <p>Note:</p>
+                        <p>{this.state.note}</p>
+                    </div>
+                    <button style = {{height: '5%'}}class = "btn btn-warning" onClick={this.noteButton}>Edit Note</button>
                 </div>
             }
         return (
             deleted === false ? (
             <div>
-                <div className="input-card">
+                <div className="card input-card">
                     <div className ="input-pic">
-                        <img height = '250px' width = '250px' src = {this.props.food.image}></img>
+                        <img height = '100%' width = '100%' src = {this.props.food.image}></img>
                     </div>
-                    <div height = '700px' width = '700px' className="input-text">
+                    <div className="input-text">
                         <p>Food Name: {this.capitalize(this.props.food.name)}</p>
                         <p>Calories Consumed: {this.props.food.calories} calories</p>
                         <p>Fat: {this.props.food.fat} g</p>
@@ -102,8 +105,11 @@ export class FoodCard extends Component {
                             {note}
                         </div>
                         <br></br>
-                        <button className="secondary-bttn" onClick = {this.editFood}>Edit</button>
-                        <button className="secondary-bttn" onClick ={this.deleteFood}>Delete</button>
+                        <div>
+                            <button style= {{marginRight: '5%'}} className="btn btn-warning" onClick = {this.editFood}>Edit</button>
+                            <button className="btn btn-danger" onClick ={this.deleteFood}>Delete</button>
+
+                        </div>
                         <br></br>
                     </div>
                 </div>
