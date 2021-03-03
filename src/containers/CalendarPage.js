@@ -19,7 +19,7 @@ export default class CalendarPage extends Component {
   
 
   componentDidMount(){
-    let user = json.user.data.attributes ;
+    let currentUserId = localStorage.getItem('id')
     let weekFoodData = []
     let weekExerciseData = []
     let getWeek = () => {
@@ -28,7 +28,7 @@ export default class CalendarPage extends Component {
         let first = curr.getDate() - curr.getDay() + i 
         let date = new Date(curr.setDate(first)).toISOString().slice(0, 10)
       
-        api.getUserFoods(this.props.currentUser.id, date)
+        api.getUserFoods(currentUserId, date)
         .then(json => {
           
           json.data.forEach(data => {
@@ -36,7 +36,6 @@ export default class CalendarPage extends Component {
             newData["date"] = date
             newData["calories"] = data.attributes.calories
             weekFoodData.push(newData)
-            
           })
           this.setState({
             weekFoodData: weekFoodData
@@ -44,7 +43,7 @@ export default class CalendarPage extends Component {
           // console.log(this.state.weekFoodData)
         })
 
-        api.getUserExercises(this.props.currentUser, date)
+        api.getUserExercises(currentUserId, date)
         .then(json => {
           json.data.forEach(data => {
             let newData= {}

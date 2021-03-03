@@ -42,7 +42,7 @@ componentDidMount() {
   const token = localStorage.getItem('token');
   if(token) {
     api.getCurrentUser().then(json => {
-      this.setState({ currentUser: json.user.data.attributes });
+      this.setState({ currentUser: json.user.data});
       console.log(json)
     });
   }
@@ -52,11 +52,13 @@ handleLogin = json => {
   const currentUser = json;
   console.log(currentUser)
   localStorage.setItem('token', currentUser.jwt );
+  localStorage.setItem('id', currentUser.user.data.id)
   this.setState({ currentUser: {username: currentUser.user.data.attributes.username, id: currentUser.user.data.id }});
 }
 
 handleLogout = () => {
   localStorage.removeItem('token');
+  localStorage.removeItem('id');
   this.setState({ currentUser: {} })
   
 };

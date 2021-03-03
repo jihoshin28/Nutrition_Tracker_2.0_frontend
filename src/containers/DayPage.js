@@ -15,48 +15,44 @@ export class DayPage extends Component {
             lunchFoods: null,
             dinnerFoods: null,
             dayNotes: null,
-            params: props.match.params,
+            dateParams: props.match.params.date,
             foodData: null,
-            foodLoading: false, 
-            exerciseLoading: false,
-            noteLoading: false
+            currentUser: props.currentUser
             
         }
     }
 
     componentDidMount(){
-        console.log(this.props)
-        let dateParams = this.props.match.params.date
-            api.getUserFoods(this.props.currentUser.id, dateParams)
+        let currentUserId = localStorage.getItem('id')
+        let dateParams = this.state.dateParams
+            api.getUserFoods(currentUserId, dateParams)
             .then(json => {
                 console.log(json.data)
                 let breakfastFoods = json.data.filter(food => food.attributes.meal === 'breakfast')
                 let lunchFoods = json.data.filter(food => food.attributes.meal === 'lunch')
                 let dinnerFoods = json.data.filter(food => food.attributes.meal === 'dinner')
                 let foodData = {
-                    fat: json.data.map((food)=>{
-                        let fatHash = {}
-                        fatHash['data'] = food.attributes.fat
-                        fatHash['time'] = food.attributes.time
-                        return fatHash
-                    }),
-                    protein: json.data.map((food)=>{
-                        let proteinHash = {}
-                        proteinHash['data'] = food.attributes.protein
-                        proteinHash['time'] = food.attributes.time
-                        return proteinHash
-                    }),
-                    carbs: json.data.map((food)=>{
-                        let carbHash = {}
-                        carbHash['data'] = food.attributes.carbs
-                        carbHash['time'] = food.attributes.time
-                        return carbHash
-                    }),
                     calories: json.data.map((food)=>{
                         let caloriesHash = {}
                         caloriesHash['data'] = food.attributes.calories
                         caloriesHash['time'] = food.attributes.time
                         return caloriesHash
+                    }),
+                    fat: json.data.map((food)=>{
+                        let fatHash = {}
+                        fatHash['data'] = food.attributes.fat
+                        return fatHash
+                    }),
+                    protein: json.data.map((food)=>{
+                        let proteinHash = {}
+                        proteinHash['data'] = food.attributes.protein
+                        return proteinHash
+                    }),
+                    carbs: json.data.map((food)=>{
+                        let carbHash = {}
+                        carbHash['data'] = food.attributes.carbs
+                        
+                        return carbHash
                     }),
                     potassium: json.data.map((food)=>{
                         let potassiumHash = {}
@@ -89,53 +85,33 @@ export class DayPage extends Component {
                         return cholesterolHash
                     })
                 }
-                this.setState({
-                    breakfastFoods: breakfastFoods,
-                    lunchFoods: lunchFoods,
-                    dinnerFoods: dinnerFoods,
-                    foodData: foodData,
-                    foodLoading: true
-                })
-                console.log(foodData)
+            this.setState({
+                breakfastFoods: breakfastFoods,
+                lunchFoods: lunchFoods,
+                dinnerFoods: dinnerFoods,
+                foodData: foodData,
             })
-
-            api.getUserExercises(this.props.currentUser.id, dateParams)
-            .then(json => {
-                console.log(json.data)
-                let exerciseData = json.data.map(food => food.attributes.calories)
-                this.setState({
-                    dayExercises: json.data,
-                    exerciseData: exerciseData,
-                    exerciseLoading: true
-                })
-                
-            })
-
-            api.getUserNotes(this.props.currentUser.id, dateParams)
-            .then(json => {
-                console.log(json.data)
-                this.setState({
-                    dayNotes: json.data,
-                    noteLoading: true
-                })
-            })
-                    
-            
-            
-            
-    }
-
-    componentWillUnmount(){
-        this.setState({
-            dayExercises: null,
-            breakfastFoods: null,
-            lunchFoods: null,
-            dinnerFoods: null,
-            dayNotes: null,
-            foodData: null,
-            foodLoading: false, 
-
+            console.log(foodData)
         })
+
+        api.getUserExercises(this.props.currentUser.id, dateParams)
+        .then(json => {
+            console.log(json.data)
+            let exerciseData = json.data.map(food => food.attributes.calories)
+            this.setState({
+                dayExercises: json.data,
+                exerciseData: exerciseData,
+            })
+            
+        })
+
+        api.getUserNotes(this.props.currentUser.id, dateParams)
+        .then(json => {
+            console.log(json.data)
+            this.setState({
+                dayNotes: json.data,
+            })
+        })            
     }
 
     render() {
@@ -198,12 +174,10 @@ export class DayPage extends Component {
                 let sum = this.state.exerciseData.reduce((total, sum) => total + sum)
                 caloriesBurned = `${sum} calories`
             }
+            console.log(this.state.currentUser)
         return (
-        
         <div>
-            {!this.state.foodLoading || !this.state.exerciseLoading || !this.state.noteLoading ? 
-                <div>Loading</div> 
-            :
+            
             <div>
                 <h1>{date}</h1>  
                 <div className="top-section">
@@ -305,7 +279,7 @@ export class DayPage extends Component {
                     
                 </div>
             </div>
-            }
+            
             <br></br><br></br>
         </div>
         )
