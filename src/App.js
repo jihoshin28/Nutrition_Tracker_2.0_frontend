@@ -12,7 +12,6 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import CalendarPage from './containers/CalendarPage'
 import DayPage from './containers/DayPage'
-import TodayPage from './containers/TodayPage'
 import PostPage from './containers/PostPage'
 import PostExercise from './containers/PostExercise'
 import PostNote from './containers/PostNote'
@@ -68,14 +67,13 @@ handleLogout = () => {
       <header className="App-header">  
           <Router basename = "/">
             <div className='app'>
-            <NavBar handleLogout={this.handleLogout} currentUser = {this.state.currentUser} currentDate = {this.state.currentDate}/>
+            <NavBar handleLogout={this.handleLogout} currentUser = {this.state.currentUser} currentDate = {this.state.current_date}/>
             <Route exact path ="/" render={(props) => <About {...props} currentuser ={this.state.currentUser}/>} />
             <Route exact path ="/about" render={(props) => <About {...props} currentuser ={this.state.currentUser}/>} />
-            <Route exact path="/login" render={(props) => <Login {...props} handleLogin={this.handleLogin}/>} currentDate = {this.state.currentDate}/>
-            <Route exact path="/signup" render={(props) => <SignUp {...props} handleLogin={this.handleLogin} currentDate = {this.state.currentDate}/>} />
+            <Route exact path="/login" render={(props) => <Login {...props} handleLogin={this.handleLogin} currentDate = {this.state.current_date}/>} />
+            <Route exact path="/signup" render={(props) => <SignUp {...props} handleLogin={this.handleLogin} currentDate = {this.state.current_date}/>} />
             <Route exact path="/profile" render ={(props) => <ProfilePage {...props} handleLogout={this.handleLogout} currentUser={this.state.currentUser}/>} />
             <Route exact path="/daypage/:date" render = {(props) => <DayPage {...props} currentUser = {this.state.currentUser}/>}/>
-            <Route exact path="/todaypage" render = {(props) => <TodayPage {...props} currentUser = {this.state.currentUser}/>}/>
             <Route exact path="/calendar" render = {(props) => <CalendarPage {...props} currentUser = {this.state.currentUser}/>}/>
             <Route exact path="/post" render = {(props) => <PostPage {...props} currentUser = {this.state.currentUser}/>}/>
             <Route exact path="/postfood" render = {(props) => <PostFood {...props} currentUser = {this.state.currentUser}/>}/>

@@ -29,7 +29,7 @@ export class Login extends Component {
             this.setState({ error: true })
             console.log(this.state.error)
           } else {
-              console.log(json)
+            console.log(json)
             this.props.handleLogin(json);
             this.props.history.push(`/daypage/${this.props.currentDate}`);
           };
