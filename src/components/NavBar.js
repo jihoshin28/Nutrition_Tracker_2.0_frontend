@@ -13,7 +13,10 @@ function NavBar(props) {
                
             {loggedIn ? (  
                 <div>
-                    <li className= "nav">Nutrition Tracker</li>
+                    <li className= "nav">
+                        <img style = {{height: '15%', width: '15%'}} src = {'./chart_logo.png'}></img>
+                        Nutrition Tracker
+                    </li>
                 
                     <li className="nav"><NavLink to={`/daypage/${props.currentDate}`}>Today</NavLink></li>
                     <li className="nav"><NavLink to="/calendar">Calendar</NavLink></li>
