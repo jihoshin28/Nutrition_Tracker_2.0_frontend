@@ -16,15 +16,15 @@ recognition.maxAlternatives = 1;
 
 const RecordButton = (props) => {
     
-    let[ref] = useState(React.createRef())
+    let[buttonClass, setButtonClass] = useState('pulsate')
 
     let startSpeechToText = () => {
         recognition.start()
-        ref.current.classList.remove('pulsate')
-        ref.current.classList.add('recording-pulsate')
+        setButtonClass('recording-pulsate')
     }
 
     recognition.onresult = (event) => {
+        console.log(props.type)
         var text = event.results[0][0].transcript
         var confidence = event.results[0][0].confidence
         props.setResults(text, confidence, props.type)
@@ -32,13 +32,12 @@ const RecordButton = (props) => {
     
     recognition.onspeechend = () => {
         recognition.stop()
-        ref.current.classList.remove('recording-pulsate')
-        ref.current.classList.add('pulsate')
+        setButtonClass('pulsate')
     }
 
     return (
         <div class = "record-box">
-            <button ref = {ref} type = 'button' onClick = {startSpeechToText} class = "pulsate"></button>
+            <button class = {`${buttonClass}`} type = 'button' onClick = {startSpeechToText}></button>
         </div>
     )
 }

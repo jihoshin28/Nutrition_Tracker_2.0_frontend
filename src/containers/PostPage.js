@@ -11,8 +11,8 @@ const PostPage = (props) => {
     let[meal, setMeal] = useState(null)
     let[posted, setPosted] = useState(false)
     let[menu, setMenu] = useState('')
-    let[recordSelect, setRecordSelect] = useState('')
-    let[transcript, setTranscript] = useState('')
+    let[recordSelect, setRecordSelect] = useState('subject')
+    let[text, setText] = useState('')
     let[confidence, setConfidence] = useState('')
     let[type, setType] = useState('')
 
@@ -30,7 +30,9 @@ const PostPage = (props) => {
     }
 
     let setRecordResults = (text, confidence, type) => {
-        setTranscript(text)
+        console.log(type)
+        let newFields = { ...fields, [type]: text };
+        setFields(newFields)
         setConfidence(confidence)
         setType(type)
     }
@@ -111,7 +113,7 @@ const PostPage = (props) => {
         if (menu === "food"){
         currentMenu = 
         <div>
-            <form className="userForm" onSubmit={(event) => postFood(event, fields.foodInput, props.currentUser, fields.date, meal)}>
+            <form className="userForm" onSubmit={(event) => postFood(event, fields.food, props.currentUser, fields.date, meal)}>
                 <h3 style = {{marginBottom: '4%'}}>Submit a food post</h3>
                 <label> Select Meal:
                 <select onChange ={handleMeal} name="meal" id="meal-select">
@@ -127,7 +129,7 @@ const PostPage = (props) => {
                 </label> <br/>
                 <div class = 'record-row'>
                     <label> Post Food:
-                        <input type="text" name="foodInput" onChange={handleChange}/>
+                        <input type = "text" value = {fields.food} name="food" onChange={handleChange}/>
                     </label>
                     <RecordButton type = "food" setResults = {setRecordResults}/>
                 </div>
@@ -140,14 +142,14 @@ const PostPage = (props) => {
         } else if (menu === "exercise") {
         currentMenu = 
         <div>
-            <form className="userForm" onSubmit={(event) => postExercise(event, fields.exerciseInput, props.currentUser, fields.date)}>
+            <form className="userForm" onSubmit={(event) => postExercise(event, fields.exercise, props.currentUser, fields.date)}>
                 <h3 style = {{marginBottom: '4%'}}>Submit an exercise post</h3>
                 <label> Date:
                     <input onChange={handleChange} type="date" name="date" /> 
                 </label> <br/>
                 <div className = "record-row">
                     <label> Post Exercise:
-                        <input type="text" name="exerciseInput" onChange={handleChange}/>
+                        <input type="text" value = {fields.exercise} name="exercise" onChange={handleChange}/>
                     </label>
                     <RecordButton type = "exercise" setResults = {setRecordResults}/>
                 </div>
@@ -166,11 +168,11 @@ const PostPage = (props) => {
                         <input onChange={handleChange} type="date" name="date" /> 
                     </label> <br/>
                     <label> Heading:
-                        <input type="text" name="subject" onChange={handleChange}/>
+                        <input value = {fields.subject} type="text" name="subject" onChange={handleChange}/>
                     </label>
                     <br></br>
                     <label> Text:
-                        <input type="text" name="text" onChange={handleChange}/>
+                        <input value = {fields.text} type="text" name="text" onChange={handleChange}/>
                     </label>
                     <div className = "record-row">
                         <select onChange ={handleRecordSelect} name="record_select" id="record-select">
@@ -214,7 +216,7 @@ const PostPage = (props) => {
                     {currentMenu}
                     <br></br>
                     
-                    {transcript ? 
+                    {confidence ? 
                         <div>
                             <div>
                                 {`Confidence level ${confidence}`}
