@@ -1,46 +1,20 @@
 import React, { Component, useState, useEffect } from 'react'
 import api from '../services/Api'
+import RecordButton from '../components/RecordButton'
 import { Link } from 'react-router-dom'
 
-var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
-var SpeechGrammarList = window.SpeechGrammarList || window.webkitSpeechGrammarList
-var SpeechRecognitionEvent = window.SpeechRecognitionEvent || window.webkitSpeechRecognitionEvent
-
-const grammar = '#JSGF V1.0; grammar numbers; public <number> = one | two | three | four | five | six | seven | eight| nine | ten ;'
-var recognition = new SpeechRecognition()
-var speechRecognitionList = new SpeechGrammarList()
-speechRecognitionList.addFromString(grammar, 1)
-recognition.grammars = speechRecognitionList
-recognition.continuous = false;
-recognition.lang = 'en-US';
-recognition.interimResults = false;
-recognition.maxAlternatives = 1;
-
-console.log(speechRecognitionList)
-
-const PostPage = (props, recognition) => {
+const PostPage = (props) => {
 
     let[error, setError] = useState(false)
-    let[fields, setFields] = useState(null)
+    let[fields, setFields] = useState({})
     let[date, setDate] = useState(null)
     let[meal, setMeal] = useState(null)
     let[posted, setPosted] = useState(false)
     let[menu, setMenu] = useState('')
+    let[recordSelect, setRecordSelect] = useState('')
     let[transcript, setTranscript] = useState('')
-
-
-    let starttalkToText = () => {
-        recognition.start()
-    }
-
-    // recognition.onresult = (event) => {
-    //     var result = event.results[0][0].transcript
-    //     setTranscript(result)
-    // }
-    
-    // recognition.onspeechend = () => {
-    //     recognition.stop()
-    // }
+    let[confidence, setConfidence] = useState('')
+    let[type, setType] = useState('')
 
     let handleMenu = (e) => {
         setMenu(e.target.value)
@@ -48,6 +22,17 @@ const PostPage = (props, recognition) => {
 
     let handleMeal = (e) => {
         setMeal(e.target.value)
+    }
+
+    let handleRecordSelect = (e) => {
+        console.log(e.target.value, recordSelect)
+        setRecordSelect(e.target.value)
+    }
+
+    let setRecordResults = (text, confidence, type) => {
+        setTranscript(text)
+        setConfidence(confidence)
+        setType(type)
     }
 
     let handleChange = (e) => {
@@ -74,7 +59,6 @@ const PostPage = (props, recognition) => {
     let postFood = (event, query, user, date, meal) => {
         event.preventDefault()
         if(!date || !query || !meal || (!date && !query && !meal)){
-           
             console.log(date, query, meal)
             alert("Please Fill In Required Fields!")
         } else {
@@ -128,14 +112,7 @@ const PostPage = (props, recognition) => {
         currentMenu = 
         <div>
             <form className="userForm" onSubmit={(event) => postFood(event, fields.foodInput, props.currentUser, fields.date, meal)}>
-                <h3>Submit a food post with speech recognition</h3>
-                <label> Date:
-                    <input onChange={handleChange} type="date" name="date" /> 
-                </label> <br/>
-                <label> Post Food:
-                    <input type="text" name="foodInput" onChange={handleChange}/>
-                </label>
-                <br></br>
+                <h3 style = {{marginBottom: '4%'}}>Submit a food post</h3>
                 <label> Select Meal:
                 <select onChange ={handleMeal} name="meal" id="meal-select">
                     <option value="">Select Category</option>
@@ -145,36 +122,46 @@ const PostPage = (props, recognition) => {
                 </select>
                 </label>
                 <br></br>
-                <input type="submit" value="Submit" />
+                <label> Date:
+                    <input onChange={handleChange} type="date" name="date" /> 
+                </label> <br/>
+                <div class = 'record-row'>
+                    <label> Post Food:
+                        <input type="text" name="foodInput" onChange={handleChange}/>
+                    </label>
+                    <RecordButton type = "food" setResults = {setRecordResults}/>
+                </div>
+                <h5 style = {{marginTop: '5%', fontStyle: 'italic'}}>To record press the red button and speak into your microphone</h5>
+                <br></br>
+                <input className = "btn btn-light" type="submit" value="Submit" />
             </form>
-            <div style = {{marginTop: '2%'}}>
-                <button onClick = {() => starttalkToText()} className = 'btn btn-primary'>Click to start speech to text</button>
-            </div>
+            
         </div>
         } else if (menu === "exercise") {
         currentMenu = 
         <div>
             <form className="userForm" onSubmit={(event) => postExercise(event, fields.exerciseInput, props.currentUser, fields.date)}>
-                <h3>Submit an exercise post with speech recognition</h3>
+                <h3 style = {{marginBottom: '4%'}}>Submit an exercise post</h3>
                 <label> Date:
                     <input onChange={handleChange} type="date" name="date" /> 
                 </label> <br/>
-                <label> Post Exercise:
-                    <input type="text" name="exerciseInput" onChange={handleChange}/>
-                </label>
+                <div className = "record-row">
+                    <label> Post Exercise:
+                        <input type="text" name="exerciseInput" onChange={handleChange}/>
+                    </label>
+                    <RecordButton type = "exercise" setResults = {setRecordResults}/>
+                </div>
+                <h5 style = {{marginTop: '5%', fontStyle: 'italic'}}>To record press the red button and speak into your microphone</h5>
                 <br></br>
-                <input type="submit" value="Submit" />
+                <input className = "btn btn-light" type="submit" value="Submit" />
             </form>
-            <div style = {{marginTop: '2%'}}>
-                <button onClick = {() => starttalkToText()} className = 'btn btn-primary'>Click to start speech to text</button>
-            </div>
         </div>
         }
         else if (menu === "note") {
             currentMenu = 
             <div>
                 <form className="userForm" onSubmit={(event) => postNote(event, fields.subject, fields.text, props.currentUser, fields.date)}>
-                    <h3>Submit an note with speech recognition</h3>
+                    <h3 style = {{marginBottom: '4%'}}>Add a note</h3>
                     <label> Date:
                         <input onChange={handleChange} type="date" name="date" /> 
                     </label> <br/>
@@ -185,12 +172,17 @@ const PostPage = (props, recognition) => {
                     <label> Text:
                         <input type="text" name="text" onChange={handleChange}/>
                     </label>
+                    <div className = "record-row">
+                        <select onChange ={handleRecordSelect} name="record_select" id="record-select">
+                            <option value="subject">Record Subject</option>
+                            <option value="text">Record Text</option>
+                        </select>
+                        <RecordButton type = {recordSelect} setResults = {setRecordResults}/>
+                    </div>
+                    <h5 style = {{marginTop: '5%', fontStyle: 'italic'}}>To record press the red button and speak into your microphone</h5>
                     <br></br>
-                    <input type="submit" value="Submit" />
+                    <input className = "btn btn-light" type="submit" value="Submit" />
                 </form>
-                <div style = {{marginTop: '2%'}}>
-                    <button onClick = {() => starttalkToText()} className = 'btn btn-primary'>Click to start speech to text</button>
-                </div>
 
             </div>
         }
@@ -203,23 +195,41 @@ const PostPage = (props, recognition) => {
 
 
         return (
-            <div>
-                <h1>Post Log</h1>
+            <div class= "post-page">
                 {posted ? <h2>Posted!</h2> : null}
-                <select onChange ={handleMenu} name="menu">
-                    <option value="">Select Category</option>
-                    <option value="food">Food</option>
-                    <option value="exercise">Exercise</option>
-                    <option value="note">Note</option>
-                </select>
-                <br></br>
-                <br></br>
+                <div className = "container">
                 
-                {currentMenu}
-                <br></br>
-                {transcript}
-                <br></br>
-                {link}
+                <h1 style = {{marginBottom: "5%"}}>Post with Speech to Text</h1>
+                <div className = "speechPostDiv">
+                    <h2 style = {{marginBottom: "5%"}}>Select a category</h2>
+                    <select onChange ={handleMenu} name="menu">
+                        <option value="">Select Category</option>
+                        <option value="food">Food</option>
+                        <option value="exercise">Exercise</option>
+                        <option value="note">Note</option>
+                    </select>
+                    <br></br>
+                    <br></br>
+                    
+                    {currentMenu}
+                    <br></br>
+                    
+                    {transcript ? 
+                        <div>
+                            <div>
+                                {`Confidence level ${confidence}`}
+                                <br></br>
+                                {`Recorded for ${type}`}
+                            </div>
+                            
+                        </div> 
+                    :
+                    null   
+                    }
+                    <br></br>
+                    {link}
+                </div>
+                </div>
             </div>
         )
     

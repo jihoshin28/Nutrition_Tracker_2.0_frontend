@@ -22,7 +22,7 @@ function NavBar(props) {
                     <li className="nav"><NavLink to="/calendar">Calendar</NavLink></li>
                     <li className="nav"><NavLink to="/profile">Profile</NavLink></li>
                     <li className="nav"><NavLink to="/about">About</NavLink></li> 
-                    <li className="nav"><NavLink to="/post">Post</NavLink></li> 
+                    <li className="nav"><NavLink to="/post">Speech-2-Text</NavLink></li> 
                     <li className="navLog"><NavLink to="/about" onClick={props.handleLogout}>Logout</NavLink> </li> 
                 </div>
                 
