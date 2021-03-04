@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 
 const PostPage = (props) => {
 
-    let[error, setError] = useState(false)
     let[fields, setFields] = useState({})
     let[date, setDate] = useState(null)
     let[meal, setMeal] = useState(null)

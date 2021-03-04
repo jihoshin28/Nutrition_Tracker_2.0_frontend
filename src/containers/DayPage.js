@@ -123,7 +123,10 @@ export class DayPage extends Component {
         let foodgraphs
         let caloriesBurned
         let dateSplit = this.props.match.params.date.split('-')
-        let date = `0${dateSplit[1]}/0${dateSplit[2]}/${dateSplit[0]}`
+        let day = dateSplit[1].length === 2 ? dateSplit[1] : '0' + dateSplit[1]
+        let month = dateSplit[2].length === 2 ? dateSplit[2] : '0' + dateSplit[2]
+        let year = dateSplit[0]
+        let date = `${day}/${month}/${year}`
         
         
             if (!!this.state.dayExercises && !this.state.dayExercises[0]){
